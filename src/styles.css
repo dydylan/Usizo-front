@@ -1,1 +1,51 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #fed8b1;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+.row {
+  @apply flex flex-row;
+}
+
+.col {
+  @apply flex flex-col;
+}
+
+.navbar {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0px;
+  background-color: bisque;
+  padding: 10px;
+}
+
+.user-img,
+.product-img {
+  width: 100px;
+}
+
+.check-img,
+.plus-img,
+.minus-img {
+  width: 50px;
+}
+
+.search-img {
+  width: 1em;
+}
+
+/* * {
+  border: 1px solid;
+} */
+
+.logo-usizo {
+  width: 80px;
+}

@@ -3,16 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './composants/dashboard/dashboard.component';
+import { ShoppingListManagerComponent } from './composants/shopping-list-manager/shopping-list-manager.component';
+import { LoginComponent } from './composants/login/login.component';
+import { SignUpComponent } from './composants/sign-up/sign-up.component';
+import { FooterComponent } from './composants/footer/footer.component';
+import { HeaderComponent } from './composants/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    ShoppingListManagerComponent,
+    LoginComponent,
+    SignUpComponent,
+    FooterComponent,
+    HeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
