@@ -1,5 +1,5 @@
 
-<div class="h-screen w-full">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="h-screen w-full">
   <div class="bg-gray-800 mx-auto max-w-md">
     <div class="p-12">
       <p class="text-5xl pt-10 text-yellow-500 font-bold">
@@ -9,24 +9,43 @@
     </div>
     <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
       <div class="p-3 mx-6 border-b border-gray-500">
-        <input placeholder="Nom" class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
+        <input placeholder="Nom" [formControlName]="'name'" class="form-control bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" type="text" />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors?.required">Le nom est requis</div>
+        </div>
       </div>
 
       <div class="p-3 mx-6 flex border-b border-gray-500">
-        <input placeholder="Mot de passe" class="bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" type="password" />
+        <input placeholder="Saisir un mot de passe" [formControlName]="'password1'" name="password1" class="form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" [ngClass]="{ 'is-invalid': submitted && f.password1.errors }" type="password" />
+        <div *ngIf="submitted && f.password1.errors" class="invalid-feedback">
+          <div *ngIf="f.password1.errors?.required">Mot de passe est requis</div>
+          <div *ngIf="f.password1.errors?.minLength">Il doit contenir au moins 6 caractères</div>
+        </div>
       </div>
 
       <div class="p-3 mx-6 flex border-b border-gray-500">
-        <input placeholder="Confirmer le mot de passe" class="bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" type="password" />
+        <input placeholder="Confirmer le mot de passe" [formControlName]="'password2'" name="password2" class="form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" type="password" />
+        <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+          <div *ngIf="f.password2.errors?.required">La confirmation du mot de passe est requise</div>
+          <div *ngIf="f.password2.errors?.mustMatch">Les deux mots de passe doivent correspondrent</div>
+        </div>
+
       </div>
 
     </div>
 
     <div class="w-full p-12">
-      <button class=" bg-yellow-500 p-3 rounded-3xl w-full h-full hover:bg-yellow-600"> Se connecter</button>
+      <button type="submit" [disabled]="!registerForm.valid" class=" bg-yellow-500 p-3 rounded-3xl w-full h-full hover:bg-yellow-600"> Se connecter</button>
       <p class="mx-auto text-center mt-3 text-gray-400">Déjà un compte ?  <a routerLink="/login" class="text-md font-semibold">Se connecter</a> </p>
     </div>
 
   </div>
+
+</form>
+
+
+
+
+
 
 
