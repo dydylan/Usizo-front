@@ -9,6 +9,10 @@ import { LoginComponent } from './composants/login/login.component';
 import { SignUpComponent } from './composants/sign-up/sign-up.component';
 import { FooterComponent } from './composants/footer/footer.component';
 import { HeaderComponent } from './composants/header/header.component';
+import { ShoppingListSummaryComponent } from './composants/shopping-list-summary/shopping-list-summary.component';
+import { SearchAndAddComponent } from './composants/search-and-add/search-and-add.component';
+import { NeedToCheckComponent } from './composants/need-to-check/need-to-check.component';
+import { NeedToModifyComponent } from './composants/need-to-modify/need-to-modify.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,10 @@ import { HeaderComponent } from './composants/header/header.component';
     SignUpComponent,
     FooterComponent,
     HeaderComponent,
+    ShoppingListSummaryComponent,
+    SearchAndAddComponent,
+    NeedToCheckComponent,
+    NeedToModifyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

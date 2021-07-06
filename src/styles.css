@@ -6,16 +6,17 @@
 @import "tailwindcss/utilities";
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  --orange: #FD7E37;
+}
+
 html {
   font-size: .625em; /* fallback IE8+ */
   font-size: calc(1em * .625); /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
   scroll-behavior: smooth;
 }
 
-
-
 body {
-  background-color: #fed8b1;
   font-size:2rem;
 }
 
@@ -24,7 +25,52 @@ h1 {
 }
 
 h2 {
-  font-size: 2.4rem;
+  font-size: 3rem;
+}
+
+h1,h2{
+  text-align:center;
+}
+
+.navbar {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
+  background-color: var(--orange);
+  padding: 1rem;
+}
+
+.dashboard-section, .shopping-list-manager, .section-login, .section-signup, .search-and-add{
+  padding:2rem;
+}
+
+.search-and-add, .delete-btn, .section-login, .section-sign-up .section-need-to-modify{
+  margin:2rem;
+}
+
+.shopping-list-summary-article, .need-to-check-article, .need-to-modify-article{
+  margin: 0 2rem 0 2rem;
+}
+
+footer {
+  color: white;
+  background-color: var(--orange);
+  padding: 1rem;
+}
+
+.menu-item{
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+}
+
+.menu-item .active,
+.menu-item:hover,
+.menu-item:focus {
+  color: var(--orange);
+  background-color: white;
+  border-radius:1rem;
 }
 
 .row {
@@ -35,17 +81,15 @@ h2 {
   @apply flex flex-col;
 }
 
-.navbar {
-  position: -webkit-sticky !important;
-  position: sticky !important;
-  top: 0px;
-  background-color: bisque;
-  padding: 10px;
-}
 
 .user-img,
 .product-img {
   width: 100px;
+  margin: 1rem;
+}
+
+.user-img{
+  border-radius:50%;
 }
 
 .check-img,
@@ -64,4 +108,69 @@ h2 {
 
 .usizo-img {
   width: 6rem;
+}
+
+button{
+  padding:1rem;
+  color:white;
+  font-weight: 600;
+  background-color: var(--orange);
+  border-radius:0.5rem;
+}
+
+.need-to-check-article{
+  padding: 1.8rem 1.2rem;
+  border-radius:1rem;
+}
+
+.user-article{
+  padding: 1.8rem 1.2rem;
+}
+
+.search-bar{
+  border: solid 0.1rem grey;
+}
+
+.delete-btn{
+  background-color: #DC143C;
+}
+
+.quantity{
+  font-weight: 500;
+  font-size:2rem;
+}
+
+
+.quantity{
+  margin-right: 1rem;
+}
+
+.need-to-check-article input{
+  margin-left:1rem;
+  transform: scale(1.5);
+}
+
+.shopping-list-summary-article,
+.need-to-check-article,
+.need-to-modify-article{
+  border-bottom: dashed var(--orange);
+  border-radius: 0;
+  padding: 2rem;
+}
+
+.app-shopping-list-summary:last-child .shopping-list-summary-article,
+.app-need-to-check:last-child .need-to-check-article,
+.app-need-to-modify:last-child .need-to-modify-article{
+  border-bottom: none;
+  padding: 2rem;
+}
+
+.shopping-list-summary-section,.need-to-check-section, .need-to-modify-section, .search-and-add-section{
+  margin: 1rem;
+  box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);
+  border-radius: 1rem;
+}
+
+.need-to-modify-section, .search-and-add-section{
+  padding: 2rem;
 }
