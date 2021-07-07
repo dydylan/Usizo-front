@@ -52,7 +52,7 @@ h1,h2{
   margin: 0 2rem 0 2rem;
 }
 .shopping-list-summary-article{
-  padding: 2rem;
+  padding: 1rem;
 }
 
 
@@ -172,7 +172,7 @@ button{
 .need-to-check-section,
 .need-to-modify-section,
 .search-and-add-section,
-.shopping-list-summary-section
+.shopping-list-summary-article
 {
   margin: 1rem;
   box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);
