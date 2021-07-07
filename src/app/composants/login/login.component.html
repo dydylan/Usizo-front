@@ -1,14 +1,26 @@
-<div class="flex justify-center">
-  <form class="col">
-    <h2 class="text-center">Login</h2>
-    <p>Invalid username or password</p>
-
-    <input type="text" placeholder="Username" />
-
-    <input type="password" placeholder="Password" />
-
-    <div class="flex justify-end">
-      <button>Login</button>
+<div class="h-screen w-full section-login">
+  <div class="bg-gray-800 mx-auto max-w-md">
+    <div class="p-12">
+      <p class="text-5xl pt-10 text-yellow-500 font-bold">
+        Bienvenue sur Usizo
+      </p>
+      <p class="text-xl py-3 text-gray-400 font-semibold">Connectez-vous pour continuer</p>
     </div>
-  </form>
+    <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
+      <div class="p-3 mx-6 border-b border-gray-500">
+        <input placeholder="Nom" class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
+      </div>
+
+      <div class="p-3 mx-6 flex border-b border-gray-500">
+        <input placeholder="Mot de passe" class="bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" type="password" />
+      </div>
+    </div>
+
+    <div class="w-full p-12">
+      <button class=" bg-yellow-500 p-3 rounded-3xl w-full h-full hover:bg-yellow-600"> Se connecter</button>
+      <p class="mx-auto text-center mt-3 text-gray-400">Pas encore de compte ?  <a routerLink="/sign-up" class="text-md font-semibold">S'enregistrer</a> </p>
+    </div>
+  </div>
 </div>
+
+

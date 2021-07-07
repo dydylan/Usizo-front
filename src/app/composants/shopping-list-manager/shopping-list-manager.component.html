@@ -1,6 +1,11 @@
 <div class="p-5">
   <h2 class="text-center">{{shoppingList.name}}</h2>
   <div class="row flex justify-center items-center">
+<section class="shopping-list-manager col">
+  <div class="row justify-center">
+    <h2>Nom liste</h2>
+  </div>
+  <article class="row flex justify-center items-center user-article">
     <ul class="row">
       <li *ngFor="let user of shoppingList.members">
         <img
@@ -16,7 +21,7 @@
       src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
       alt="plus image"
     />
-  </div>
+  </article>
   <div class="grid md:grid-cols-12">
     <div class="col sm:col-span-4 md:col-span-6 bg-red-600">
       <h2>Modifier et enlever des listes</h2>
@@ -120,5 +125,19 @@
         </form>
       </div>
     </div>
+    <section class="col sm:col-span-4 md:col-span-6 need-to-modify-section">
+      <h2>Modifier et enlever des besoins</h2>
+      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+    </section>
+    <section class="col sm:col-span-4 md:col-span-6 search-and-add-section">
+      <app-search-and-add></app-search-and-add>
+    </section>
+<!--    box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);-->
+
   </div>
-</div>
+  <div class="flex justify-end">
+    <button class="delete-btn">Supprimer la liste</button>
+  </div>
+</section>

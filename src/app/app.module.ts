@@ -11,6 +11,10 @@ import { FooterComponent } from './composants/footer/footer.component';
 import { HeaderComponent } from './composants/header/header.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ShoppingListSummaryComponent } from './composants/shopping-list-summary/shopping-list-summary.component';
+import { SearchAndAddComponent } from './composants/search-and-add/search-and-add.component';
+import { NeedToCheckComponent } from './composants/need-to-check/need-to-check.component';
+import { NeedToModifyComponent } from './composants/need-to-modify/need-to-modify.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     SignUpComponent,
     FooterComponent,
     HeaderComponent,
+    ShoppingListSummaryComponent,
+    SearchAndAddComponent,
+    NeedToCheckComponent,
+    NeedToModifyComponent,
   ],
     imports: [BrowserModule,
         HttpClientModule, AppRoutingModule, FormsModule,FormsModule, ReactiveFormsModule],
