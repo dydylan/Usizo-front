@@ -1,6 +1,8 @@
-<div class="p-5">
-  <h2 class="text-center">Nom liste</h2>
-  <div class="row flex justify-center items-center">
+<section class="shopping-list-manager col">
+  <div class="row justify-center">
+    <h2>Nom liste</h2>
+  </div>
+  <article class="row flex justify-center items-center user-article">
     <ul class="row">
       <li>
         <img
@@ -30,127 +32,21 @@
       src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
       alt="plus image"
     />
-  </div>
+  </article>
   <div class="grid md:grid-cols-12">
-    <div class="col sm:col-span-4 md:col-span-6 bg-red-600">
-      <h2>Modifier et enlever des listes</h2>
-      <ul>
-        <li class="row items-center">
-          <img
-            class="product-img"
-            src="https://cdn.shopify.com/s/files/1/0489/7544/6170/products/download-2020-10-22T193626.586-min.jpg?v=1613381919"
-            alt="product image"
-          />
-          <p>x3</p>
-          <p>nom du produit</p>
-          <input
-            type="image"
-            class="minus-img"
-            src="https://i.ibb.co/wRTBjFr/minus-icon.png"
-            alt="minus image"
-          />
-        </li>
-        <li class="row items-center">
-          <img
-            class="product-img"
-            src="https://cdn.shopify.com/s/files/1/0489/7544/6170/products/download_12_6f3a5f5f-c1e1-4299-8960-4a845282f722.jpg?v=1616087363"
-            alt="product image"
-          />
-          <p>x3</p>
-          <p>nom du produit</p>
-          <input
-            type="image"
-            class="minus-img"
-            src="https://i.ibb.co/wRTBjFr/minus-icon.png"
-            alt="minus image"
-          />
-        </li>
-        <li class="row items-center">
-          <img
-            class="product-img"
-            src="https://e.allegroimg.com/s512/01853e/dae01ec04adeb35debe9519b3ade/Kazoo-metalowe-MUZO-MU13A-mirliton-flet-rzezancow"
-            alt="product image"
-          />
+    <section class="col sm:col-span-4 md:col-span-6 need-to-modify-section">
+      <h2>Modifier et enlever des besoins</h2>
+      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+    </section>
+    <section class="col sm:col-span-4 md:col-span-6 search-and-add-section">
+      <app-search-and-add></app-search-and-add>
+    </section>
+<!--    box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);-->
 
-          <p>x3</p>
-          <p>nom du produit</p>
-          <input
-            type="image"
-            class="minus-img"
-            src="https://i.ibb.co/wRTBjFr/minus-icon.png"
-            alt="minus image"
-          />
-        </li>
-      </ul>
-    </div>
-    <div class="col sm:col-span-4 md:col-span-6 bg-yellow-200">
-      <h2>Ajouter un besoin</h2>
-
-      <div class="bg-white flex items-center rounded-full shadow-xl m-3">
-        <input
-          id="search"
-          class="
-            rounded-l-full
-            w-full
-            py-4
-            px-6
-            text-gray-700
-            leading-tight
-            focus:outline-none
-          "
-          type="text"
-          placeholder="Nom du produit"
-        />
-        <p></p>
-        <div class="p-1">
-          <button
-            class="
-              bg-blue-500
-              text-white
-              rounded-full
-              p-2
-              hover:bg-blue-400
-              focus:outline-none
-              w-12
-              h-12
-              flex
-              items-center
-              justify-center
-            "
-          >
-            <input
-              type="image"
-              class="search-img"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Search_Noun_project_15028.svg/1046px-Search_Noun_project_15028.svg.png"
-              alt="search image"
-            />
-          </button>
-        </div>
-      </div>
-
-      <!-- <div class="sm:col-span-4 md:col-span-6 bg-red-600">1</div>
-        <div class="sm:col-span-4 md:col-span-6 bg-yellow-200">2</div> -->
-
-      <div class="grid md:grid-cols-12">
-        <div class="sm:col-span-4 bg-red-600">
-          <label>
-            <input type="checkbox" />
-            <span> Fournitures scolaires </span>
-          </label>
-        </div>
-        <div class="sm:col-span-4 bg-yellow-200">
-          <label>
-            <input type="checkbox" />
-            <span> Produit ménagers </span>
-          </label>
-        </div>
-        <div class="sm:col-span-4 bg-blue-200">
-          <label>
-            <input type="checkbox" />
-            <span> Fruits </span>
-          </label>
-        </div>
-      </div>
-    </div>
   </div>
-</div>
+  <div class="flex justify-end">
+    <button class="delete-btn">Supprimer la liste</button>
+  </div>
+</section>
