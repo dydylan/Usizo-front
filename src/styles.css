@@ -51,6 +51,11 @@ h1,h2{
 .shopping-list-summary-article, .need-to-check-article, .need-to-modify-article{
   margin: 0 2rem 0 2rem;
 }
+.shopping-list-summary-article{
+  padding: 2rem;
+}
+
+
 
 footer {
   color: white;
@@ -128,7 +133,8 @@ button{
 }
 
 .search-bar{
-  border: solid 0.1rem grey;
+  border: solid 0.1rem #c1bebe;
+  padding:0.5rem;
 }
 
 .delete-btn{
@@ -150,7 +156,6 @@ button{
   transform: scale(1.5);
 }
 
-.shopping-list-summary-article,
 .need-to-check-article,
 .need-to-modify-article{
   border-bottom: dashed var(--orange);
@@ -158,14 +163,17 @@ button{
   padding: 2rem;
 }
 
-.app-shopping-list-summary:last-child .shopping-list-summary-article,
 .app-need-to-check:last-child .need-to-check-article,
 .app-need-to-modify:last-child .need-to-modify-article{
   border-bottom: none;
   padding: 2rem;
 }
 
-.shopping-list-summary-section,.need-to-check-section, .need-to-modify-section, .search-and-add-section{
+.need-to-check-section,
+.need-to-modify-section,
+.search-and-add-section,
+.shopping-list-summary-section
+{
   margin: 1rem;
   box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);
   border-radius: 1rem;
