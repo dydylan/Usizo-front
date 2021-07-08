@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<div class="grid md:grid-cols-12">
+<div class="grid md:grid-cols-12 items-start">
   <div class="sm:col-span-4">
     <label>
       <input type="checkbox" />
@@ -61,6 +61,22 @@
       <span> Fruits </span>
     </label>
   </div>
+</div>
+<div class="row flex-wrap items-center">
+  <input
+    type="image"
+    class="plus-img mr-3"
+    src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+    alt="plus image"
+  />
+  <input type="number" class="mr-3 bg-gray-300 text-right" name="custom-input-number" value="0" size="2"/>
+
+  <img
+    class="product-img mr-3"
+    src=""
+    alt="image du produit"
+  />
+  <p class="mr-3">need.product.nom</p>
 </div>
 
 <div class="row flex" *ngFor="let prod of products">
