@@ -1,10 +1,14 @@
 <article class="col items-center shopping-list-summary-article">
   <p>{{shoppingList.name}}</p>
   <div class="row justify-between items-start flex-wrap">
-    <img *ngFor="let member of shoppingList.members"
-      src="{{member.imgUrl}}"
-      class="user-img"
-      alt="user image"
-    />
+    <ul class="row flex-wrap">
+      <li *ngFor="let user of shoppingList.members">
+        <img
+          src="{{user.imgUrl}}"
+          class="user-img"
+          alt="user image"
+        />
+      </li>
+    </ul>
   </div>
 </article>
