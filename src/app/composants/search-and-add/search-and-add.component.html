@@ -1,5 +1,6 @@
 <h2>Chercher et ajouter un besoin</h2>
 
+
 <div class="bg-white flex items-center rounded-full search-bar">
   <input
     id="search"
@@ -62,17 +63,19 @@
     </label>
   </div>
 </div>
+<div class="row flex-wrap items-center">
+  <input
+    type="image"
+    class="plus-img mr-3"
+    src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+    alt="plus image"
+  />
+  <input type="number" class="mr-3 bg-gray-300 text-right" name="custom-input-number" value="0" size="2"/>
 
-<div class="row flex" *ngFor="let prod of products">
-  {{prod.nom}}
-  <img src="{{prod.imgUrl}}">
-  <form [formGroup]="formProd" (ngSubmit)="addProd(prod.id)">
-    <input type="number" min="0" value="1" formControlName="qte">
-    <input
-      type="image"
-      class="plus-img"
-      src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
-      alt="plus image"
-    />
-  </form>
+  <img
+    class="product-img mr-3"
+    src=""
+    alt="image du produit"
+  />
+  <p class="mr-3">need.product.nom</p>
 </div>
