@@ -3,13 +3,8 @@
   <div class="grid md:grid-cols-12">
     <div class="col sm:col-span-4 md:col-span-6">
       <section class="col shopping-list-summary-section">
-        <a
-          routerLink='./need-to-check/{{sl.id}}'
-          class="text-blue-500 hover:text-blue-800"
-          *ngFor="let sl of userLists"
+          <app-shopping-list-summary [shoppingList]="sl" class="app-shopping-list-summary" *ngFor="let sl of userLists" routerLink='./need-to-check/{{sl.id}}'></app-shopping-list-summary
         >
-          <app-shopping-list-summary class="app-shopping-list-summary"></app-shopping-list-summary
-        ></a>
       </section>
       <div class="flex justify-center">
         <input

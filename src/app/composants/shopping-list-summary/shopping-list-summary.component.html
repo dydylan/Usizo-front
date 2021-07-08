@@ -1,27 +1,8 @@
 <article class="col items-center shopping-list-summary-article">
-  <p>Nom liste 1</p>
+  <p>{{shoppingList.name}}</p>
   <div class="row justify-between items-start flex-wrap">
-    <ul class="row flex-wrap">
-      <li *ngFor="let user of shoppingList.members">
-        <img
-          src="{{user.imgUrl}}"
-          class="user-img"
-          alt="user image"
-        />
-      </li>
-    </ul>
-    <img
-      src="https://steamuserimages-a.akamaihd.net/ugc/794237560596039857/B9B4B62FD6EF6B14BB4BF8C3288BBE33D0C887BB/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"
-      class="user-img"
-      alt="user image"
-    />
-    <img
-      src="https://lh3.googleusercontent.com/P5gYv4mST3KelPzV7Ut9zija-VdXHf1F2jQTSQWBfocP6COPRV-m42dgXXKlZWX5GYq1yeKUKP3xT3PftkvtKA"
-      class="user-img"
-      alt="user image"
-    />
-    <img
-      src="https://pbs.twimg.com/profile_images/1117850000199966721/QbY6x8NK.png"
+    <img *ngFor="let member of shoppingList.members"
+      src="{{member.imgUrl}}"
       class="user-img"
       alt="user image"
     />

@@ -17,7 +17,6 @@ export class NeedToCheckComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params =>{
       this.shoppingListService.get(params["id"]).subscribe(sl => {
-        console.log(params["id"])
         this._shoppingList = sl
       });
     })
