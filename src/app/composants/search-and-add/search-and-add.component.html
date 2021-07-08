@@ -62,7 +62,8 @@
     </label>
   </div>
 </div>
-<div class="row flex-wrap items-center">
+<div class="row flex-wrap items-center" *ngFor="let prod of products">
+  <form [formGroup]="formProd" (ngSubmit)="addProd(prod.id)">
   <input
     type="image"
     class="plus-img mr-3"
@@ -70,25 +71,11 @@
     alt="plus image"
   />
   <input type="number" class="mr-3 bg-gray-300 text-right" name="custom-input-number" value="0" size="2"/>
-
+  </form>
   <img
     class="product-img mr-3"
-    src=""
+    src="{{prod.imgUrl}}"
     alt="image du produit"
   />
-  <p class="mr-3">need.product.nom</p>
-</div>
-
-<div class="row flex" *ngFor="let prod of products">
-  {{prod.nom}}
-  <img src="{{prod.imgUrl}}">
-  <form [formGroup]="formProd" (ngSubmit)="addProd(prod.id)">
-    <input type="number" min="0" value="1" formControlName="qte">
-    <input
-      type="image"
-      class="plus-img"
-      src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
-      alt="plus image"
-    />
-  </form>
+  <p class="mr-3">{{prod.nom}}</p>
 </div>

@@ -1,13 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../../models/Product";
-import {ShoppingList} from "../../models/ShoppingList";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NeedService} from "../../services/need.service";
 import {ProductsService} from "../../services/products.service";
-import {ShoppingListService} from "../../services/shopping-list.service";
-import {ActivatedRoute} from "@angular/router";
-import { Component, OnInit } from '@angular/core';
-import {ShoppingList} from "../../models/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ActivatedRoute} from "@angular/router";
 
@@ -29,9 +24,6 @@ export class SearchAndAddComponent implements OnInit {
       qte:this._qte
     })
   }
-  private _shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[]);
-
-  constructor(private shoppingListService:ShoppingListService,private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.productService.getAll().subscribe(prods => {
@@ -71,12 +63,6 @@ export class SearchAndAddComponent implements OnInit {
 
       })
 
-    })
-    this.activeRoute.params.subscribe(params =>{
-      this.shoppingListService.get(params["id"]).subscribe(sl => {
-        console.log(params["id"])
-        this._shoppingList = sl
-      });
     })
   }
 
