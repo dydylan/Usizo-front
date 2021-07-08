@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ShoppingList} from "../../models/ShoppingList";
 
 @Component({
   selector: 'app-need-to-check',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NeedToCheckComponent implements OnInit {
 
+  @Input() private _shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[]);
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  get shoppingList(): ShoppingList {
+    return this._shoppingList;
+  }
+
+  set shoppingList(value: ShoppingList) {
+    this._shoppingList = value;
+  }
 }

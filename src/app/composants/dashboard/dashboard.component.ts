@@ -44,4 +44,11 @@ export class DashboardComponent implements OnInit {
   set userLists(value: ShoppingList[]) {
     this._userLists = value;
   }
+
+  selectList(){
+    let str = ".col sm:col-span-4 md:col-span-6 need-to-check-section"
+    let sect = document.querySelector(str)
+    // @ts-ignore
+    sect.innerHTML = '<app-need-to-check class="app-need-to-check" [_shoppingList]="'+sect.id+'"></app-need-to-check>'
+  }
 }
