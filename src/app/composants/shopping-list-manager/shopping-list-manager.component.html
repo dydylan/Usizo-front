@@ -24,7 +24,7 @@
     <div class="col sm:col-span-4 md:col-span-6 bg-red-600">
       <h2>Modifier et enlever des listes</h2>
       <ul>
-        <li class="row items-center" >
+        <li class="row items-center" *ngFor="let need of shoppingList.needList">
           <img
             class="product-img"
             src="{{need.product.imgUrl}}"
