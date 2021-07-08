@@ -62,3 +62,17 @@
     </label>
   </div>
 </div>
+
+<div class="row flex" *ngFor="let prod of products">
+  {{prod.nom}}
+  <img src="{{prod.imgUrl}}">
+  <form [formGroup]="formProd" (ngSubmit)="addProd(prod.id)">
+    <input type="number" min="0" value="1" formControlName="qte">
+    <input
+      type="image"
+      class="plus-img"
+      src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+      alt="plus image"
+    />
+  </form>
+</div>
