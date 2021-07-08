@@ -1,9 +1,7 @@
 <div class="p-5">
-  <h2 class="text-center">{{shoppingList.name}}</h2>
-  <div class="row flex justify-center items-center">
 <section class="shopping-list-manager col">
   <div class="row justify-center">
-    <h2>Nom liste</h2>
+    <h2>{{shoppingList.name}}</h2>
   </div>
   <article class="row flex justify-center items-center user-article">
     <ul class="row">
@@ -26,7 +24,7 @@
     <div class="col sm:col-span-4 md:col-span-6 bg-red-600">
       <h2>Modifier et enlever des listes</h2>
       <ul>
-        <li class="row items-center" *ngFor="let need of shoppingList.needList">
+        <li class="row items-center" >
           <img
             class="product-img"
             src="{{need.product.imgUrl}}"

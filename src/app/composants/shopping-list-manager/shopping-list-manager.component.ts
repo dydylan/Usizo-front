@@ -4,9 +4,7 @@ import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute} from "@angular/router";
 import {ShoppingList} from "../../models/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
-import {listLazyRoutes} from "@angular/compiler/src/aot/lazy_routes";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Need} from "../../models/Need";
 import {NeedService} from "../../services/need.service";
 
 @Component({
