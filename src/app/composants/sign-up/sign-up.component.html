@@ -1,6 +1,8 @@
 
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="h-screen w-full">
 
+<div class="h-screen w-full section-login">
+
   <div class="bg-gray-800 mx-auto max-w-md">
     <div class="p-12">
       <p class="text-5xl pt-10 text-yellow-500 font-bold">
@@ -12,7 +14,7 @@
     <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
 
       <div class="p-3 mx-6 border-b border-gray-500">
-        <input placeholder="Nom" id="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" formControlName="name" required/>
+        <input placeholder="Nom" id="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" [formControlName]="'name'" required/>
         <div *ngIf="submitted && f.name.errors" class="text-red-400 text-xs">
           <div *ngIf="f.name.errors.required">Nom obligatoire</div>
         </div>
@@ -43,7 +45,7 @@
     </div>
 
   </div>
-
+</div>
 
 </form>
 

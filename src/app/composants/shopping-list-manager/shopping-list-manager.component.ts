@@ -13,3 +13,8 @@ export class ShoppingListManagerComponent implements OnInit {
   }
 
 }
+
+
+
+
+
