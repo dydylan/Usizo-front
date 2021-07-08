@@ -1,50 +1,138 @@
-<section class="shopping-list-manager col">
-  <div class="row justify-center">
-    <h2>Nom liste</h2>
-  </div>
-  <article class="row flex justify-center items-center user-article">
-    <ul class="row">
-      <li>
-        <img
-          src="https://steamuserimages-a.akamaihd.net/ugc/794237560596039857/B9B4B62FD6EF6B14BB4BF8C3288BBE33D0C887BB/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"
-          class="user-img"
-          alt="user image"
-        />
-      </li>
-      <li>
-        <img
-          src="https://lh3.googleusercontent.com/P5gYv4mST3KelPzV7Ut9zija-VdXHf1F2jQTSQWBfocP6COPRV-m42dgXXKlZWX5GYq1yeKUKP3xT3PftkvtKA"
-          class="user-img"
-          alt="user image"
-        />
-      </li>
-      <li>
-        <img
-          src="https://pbs.twimg.com/profile_images/1117850000199966721/QbY6x8NK.png"
-          class="user-img"
-          alt="user image"
-        />
-      </li>
-    </ul>
-    <input
-      type="image"
-      class="plus-img"
-      src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
-      alt="plus image"
-    />
-  </article>
-  <div class="grid md:grid-cols-12 items-start">
-    <section class="col sm:col-span-4 md:col-span-6 need-to-modify-section">
-      <h2>Modifier et enlever des besoins</h2>
-      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
-      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
-      <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
-    </section>
-    <section class="col sm:col-span-4 md:col-span-6 search-and-add-section">
-      <app-search-and-add></app-search-and-add>
-    </section>
-  </div>
-  <div class="flex justify-end">
-    <button class="delete-btn">Supprimer la liste</button>
-  </div>
-</section>
+<div class="p-5">
+  <section class="shopping-list-manager col">
+    <div class="row justify-center">
+      <h2>{{shoppingList.name}}</h2>
+    </div>
+    <article class="row flex justify-center items-center user-article">
+      <ul class="row">
+        <li *ngFor="let user of shoppingList.members">
+          <img
+            src="{{user.imgUrl}}"
+            class="user-img"
+            alt="user image"
+          />
+        </li>
+      </ul>
+      <input
+        type="image"
+        class="plus-img"
+        src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+        alt="plus image"
+      />
+    </article>
+    <div class="grid md:grid-cols-12 items-start">
+      <div class="col sm:col-span-4 md:col-span-6 bg-red-600">
+        <h2>Modifier et enlever des listes</h2>
+        <ul>
+          <li class="row items-center" *ngFor="let need of shoppingList.needList">
+            <img
+              class="product-img"
+              src="{{need.product.imgUrl}}"
+              alt="product image"
+            />
+            <p>X {{need.quantity}}</p>
+            <p>{{need.product.nom}}</p>
+            <input
+              type="image"
+              class="minus-img"
+              src="https://i.ibb.co/wRTBjFr/minus-icon.png"
+              alt="minus image"
+            />
+          </li>
+        </ul>
+      </div>
+      <div class="col sm:col-span-4 md:col-span-6 bg-yellow-200">
+        <h2>Ajouter un besoin</h2>
+
+        <div class="bg-white flex items-center rounded-full shadow-xl m-3">
+          <input
+            id="search"
+            class="
+            rounded-l-full
+            w-full
+            py-4
+            px-6
+            text-gray-700
+            leading-tight
+            focus:outline-none
+          "
+            type="text"
+            placeholder="Nom du produit"
+          />
+          <p></p>
+          <div class="p-1">
+            <button
+              class="
+              bg-blue-500
+              text-white
+              rounded-full
+              p-2
+              hover:bg-blue-400
+              focus:outline-none
+              w-12
+              h-12
+              flex
+              items-center
+              justify-center
+            "
+            >
+              <input
+                type="image"
+                class="search-img"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Search_Noun_project_15028.svg/1046px-Search_Noun_project_15028.svg.png"
+                alt="search image"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 items-start">
+          <div class="sm:col-span-4 bg-red-600">
+            <label>
+              <input type="checkbox" />
+              <span> Fournitures scolaires </span>
+            </label>
+          </div>
+          <div class="sm:col-span-4 bg-yellow-200">
+            <label>
+              <input type="checkbox" />
+              <span> Produit ménagers </span>
+            </label>
+          </div>
+          <div class="sm:col-span-4 bg-blue-200">
+            <label>
+              <input type="checkbox" />
+              <span> Fruits </span>
+            </label>
+          </div>
+        </div>
+        <div class="row flex" *ngFor="let prod of products">
+          {{prod.nom}}
+          <img src="{{prod.imgUrl}}">
+          <form [formGroup]="formProd" (ngSubmit)="addProd(prod.id)">
+            <input type="number" min="1" value="1" formControlName="qte">
+            <input
+              type="image"
+              class="plus-img"
+              src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+              alt="plus image"
+            />
+          </form>
+        </div>
+      </div>
+      <section class="col sm:col-span-4 md:col-span-6 need-to-modify-section">
+        <h2>Modifier et enlever des besoins</h2>
+        <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+        <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+        <app-need-to-modify class="app-need-to-modify row justify-between items-center"></app-need-to-modify>
+      </section>
+      <section class="col sm:col-span-4 md:col-span-6 search-and-add-section">
+        <app-search-and-add></app-search-and-add>
+      </section>
+      <!--    box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);-->
+
+    </div>
+    <div class="flex justify-end">
+      <button class="delete-btn">Supprimer la liste</button>
+    </div>
+  </section>
