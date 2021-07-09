@@ -17,6 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NeedToAddComponent } from './composants/need-to-add/need-to-add.component';
 
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,7 @@ import { NeedToAddComponent } from './composants/need-to-add/need-to-add.compone
   ],
   imports: [BrowserModule,
     HttpClientModule, AppRoutingModule, FormsModule,FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
