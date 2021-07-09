@@ -42,6 +42,7 @@ export class NeedToCheckComponent implements OnInit {
     this._shoppingList = value;
   }
 
-  checkNeed(id:number){
+  checkNeed(id:number,find:boolean){
+    this.needService.check(id,find).subscribe()
   }
 }

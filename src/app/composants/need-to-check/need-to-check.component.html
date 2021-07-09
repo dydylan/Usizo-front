@@ -5,7 +5,7 @@
   </div>
   <div class="overflow-container">
   <article class="row flex-wrap items-center need-to-check-article" *ngFor="let need of shoppingList.needList">
-    <input type="checkbox">
+    <input type="checkbox" [checked]="need.founded" (change)="checkNeed(need.id,!need.founded)">
     <img
       class="product-img"
       src="{{need.product.imgUrl}}"
