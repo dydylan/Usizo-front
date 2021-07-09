@@ -2,13 +2,13 @@
   <h1>Vos listes</h1>
   <div class="grid md:grid-cols-12 items-start">
     <div class="col sm:col-span-4 md:col-span-6">
-      <section class="col shopping-list-summary-section">
+      <section class="col shopping-list-summary-section overflow-container px-20 pb-20">
         <a
           routerLink='./need-to-check/{{sl.id}}'
           *ngFor="let sl of userLists"
         >
-          <app-shopping-list-summary class="app-shopping-list-summary"></app-shopping-list-summary
-          ></a>
+          <app-shopping-list-summary class="app-shopping-list-summary"></app-shopping-list-summary>
+        </a>
       </section>
       <div class="flex justify-center">
         <input
