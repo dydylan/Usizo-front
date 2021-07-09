@@ -5,7 +5,6 @@
       <section class="col shopping-list-summary-section">
         <a
           routerLink='./need-to-check/{{sl.id}}'
-          class="text-blue-500 hover:text-blue-800"
           *ngFor="let sl of userLists"
         >
           <app-shopping-list-summary class="app-shopping-list-summary"></app-shopping-list-summary

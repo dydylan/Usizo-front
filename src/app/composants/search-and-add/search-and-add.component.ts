@@ -5,6 +5,7 @@ import {NeedService} from "../../services/need.service";
 import {ProductsService} from "../../services/products.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ActivatedRoute} from "@angular/router";
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search-and-add',
@@ -16,7 +17,8 @@ export class SearchAndAddComponent implements OnInit {
   private _products:Product[] = []
   @Input() shoppingListId:number = 0
   private _formProd:FormGroup;
-  private _qte:FormControl
+  private _qte:FormControl;
+  private searchTerms = new Subject<string>();
 
   constructor(private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
     this._qte=new FormControl('',[Validators.required])
@@ -65,5 +67,11 @@ export class SearchAndAddComponent implements OnInit {
 
     })
   }
+
+  search(term:string):void{
+    console.log(this.searchTerms.next(term));
+    console.log(1);
+  }
+
 
 }
