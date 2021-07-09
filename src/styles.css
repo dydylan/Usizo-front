@@ -153,7 +153,6 @@ button{
   transform: scale(1.5);
 }
 
-.need-to-check-article,
 .need-to-modify-article{
   border-bottom: dashed var(--orange);
   border-radius: 0;
@@ -178,4 +177,9 @@ button{
 
 .need-to-modify-section, .search-and-add-section{
   padding: 2rem;
+}
+
+.overflow-container {
+  height: 42rem;
+  overflow-y: scroll;
 }
