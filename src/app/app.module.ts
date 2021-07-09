@@ -53,6 +53,8 @@ import { NeedToModifyComponent } from './composants/need-to-modify/need-to-modif
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +71,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [BrowserModule,
     HttpClientModule, AppRoutingModule, FormsModule,FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
