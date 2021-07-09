@@ -44,4 +44,8 @@ export class DashboardComponent implements OnInit {
   set userLists(value: ShoppingList[]) {
     this._userLists = value;
   }
+
+  addList(){
+    this.shoppingListService.create(this._user.id.toString()).subscribe(sl => window.location.href = "/shopping-list-manager/"+this.user.id+"/"+sl.id)
+  }
 }

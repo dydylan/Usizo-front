@@ -10,8 +10,8 @@ import {NeedToCheckComponent} from "./composants/need-to-check/need-to-check.com
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent,
-    children: [{ path: 'need-to-check/:id', component: NeedToCheckComponent}] },
-  { path: 'shopping-list-manager/:id', component: ShoppingListManagerComponent },
+    children: [{ path: 'need-to-check/:user/:id', component: NeedToCheckComponent}] },
+  { path: 'shopping-list-manager/:user/:id', component: ShoppingListManagerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShoppingList} from "../../models/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ActivatedRoute} from "@angular/router";
+import {NeedService} from "../../services/need.service";
 
 @Component({
   selector: 'app-need-to-modify',
@@ -12,7 +13,7 @@ export class NeedToModifyComponent implements OnInit {
 
   private _shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[]);
 
-  constructor(private shoppingListService:ShoppingListService,private activeRoute:ActivatedRoute) { }
+  constructor(private needService:NeedService,private shoppingListService:ShoppingListService,private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
@@ -28,5 +29,11 @@ export class NeedToModifyComponent implements OnInit {
 
   set shoppingList(value: ShoppingList) {
     this._shoppingList = value;
+  }
+
+  remNeed(id:number){
+    this.needService.remove(this._shoppingList.id,id).subscribe(sl =>{
+      location.reload();
+    })
   }
 }
