@@ -1,24 +1,23 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../../models/Product";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NeedService} from "../../services/need.service";
 import {ProductsService} from "../../services/products.service";
-import {ShoppingListService} from "../../services/shopping-list.service";
 import {ActivatedRoute} from "@angular/router";
-import { Subject } from 'rxjs';
+import {ShoppingList} from "../../models/ShoppingList";
+import {ShoppingListService} from "../../services/shopping-list.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-search-and-add',
-  templateUrl: './search-and-add.component.html',
-  styleUrls: ['./search-and-add.component.css']
+  selector: 'app-need-to-add',
+  templateUrl: './need-to-add.component.html',
+  styleUrls: ['./need-to-add.component.css']
 })
-export class SearchAndAddComponent implements OnInit {
+export class NeedToAddComponent implements OnInit {
 
   private _products:Product[] = []
   @Input() shoppingListId:number = 0
   private _formProd:FormGroup;
   private _qte:FormControl;
-  private searchTerms = new Subject<string>();
 
   constructor(private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
     this._qte=new FormControl('',[Validators.required])
@@ -28,9 +27,6 @@ export class SearchAndAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(prods => {
-      this._products = prods
-    })
   }
 
   get products(): Product[] {
@@ -67,11 +63,5 @@ export class SearchAndAddComponent implements OnInit {
 
     })
   }
-
-  search(term:string):void{
-    console.log(this.searchTerms.next(term));
-    console.log(1);
-  }
-
 
 }
