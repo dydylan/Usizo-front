@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../../models/Product";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute} from "@angular/router";
@@ -14,6 +14,7 @@ import {NeedService} from "../../services/need.service";
 })
 export class ShoppingListManagerComponent implements OnInit {
 
+  private _userId:number = 1
   private _products:Product[] = []
   private _shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[])
   private _formProd:FormGroup;
@@ -28,6 +29,7 @@ export class ShoppingListManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params =>{
+      this._userId = params["user"]
       this.shoppingListService.get(params["id"]).subscribe(list => {
         this._shoppingList = list;
         console.log(this._shoppingList.needList)
@@ -36,6 +38,14 @@ export class ShoppingListManagerComponent implements OnInit {
     this.productService.getAll().subscribe(prods => {
       this._products = prods
     })
+  }
+
+  get userId(): number {
+    return this._userId;
+  }
+
+  set userId(value: number) {
+    this._userId = value;
   }
 
   get products(): Product[] {
@@ -70,14 +80,7 @@ export class ShoppingListManagerComponent implements OnInit {
     this._qte = value;
   }
 
-  addProd(id:number){
-    this.productService.get(id.toString()).subscribe(prod =>
-    {
-      this.needService.create(this._shoppingList.id,id,this._formProd.get('qte')?.value).subscribe(need =>
-      {
-
-      })
-
-    })
+  remList(id:String){
+    this.shoppingListService.remove(id,this._shoppingList.id.toString()).subscribe(sl => window.location.href = "/dashboard")
   }
 }

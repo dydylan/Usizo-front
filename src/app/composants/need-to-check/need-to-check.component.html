@@ -1,8 +1,9 @@
 <div>
   <div class="row flex-xrap justify-end items-center">
     <p class="w-5/12">{{shoppingList.name}}</p>
-    <button routerLink="/shopping-list-manager/{{shoppingList.id}}">Modifier</button>
+    <button routerLink="/shopping-list-manager/{{userId}}/{{shoppingList.id}}">Modifier</button>
   </div>
+  <div class="overflow-container">
   <article class="row flex-wrap items-center need-to-check-article" *ngFor="let need of shoppingList.needList">
     <input type="checkbox">
     <img
@@ -13,4 +14,5 @@
     <p class="quantity">x{{need.quantity}}</p>
     <p>{{need.product.nom}}</p>
   </article>
+  </div>
 </div>
