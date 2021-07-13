@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 import { MustMatch } from '../../_helpers/must-match.validator';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,38 +10,40 @@ import { MustMatch } from '../../_helpers/must-match.validator';
 })
 export class SignUpComponent implements OnInit {
 
-  registerForm!: FormGroup;
-  submitted = false;
+  form: any = {
+    username: null,
+    password1: null,
+    password2: null,
+    validator: MustMatch('password1', 'password2')
+  };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(){
-    this.registerForm = this.formBuilder.group({
-      name: ['', Validators.compose([Validators.required])],
-      password1: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      password2: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-    }, {
-      validator: MustMatch('password1', 'password2')
-    });
+
   }
 
-  get f() { return this.registerForm.controls; }
-
   onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    const { username, password1, password2 } = this.form;
+    this.authService.register(username, password1).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
   onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
+    this.form.submitted = false;
+    this.form.reset();
   }
 
 }
