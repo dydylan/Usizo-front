@@ -1,19 +1,35 @@
 <section class="login-section row justify-center">
-  <form [formGroup]="connectionForm" (ngSubmit)="onSubmit()" class="col items-center">
+  <form *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        class="col items-center">
     <h2>Se connecter</h2>
 
   <div class="w-full">
     <div class="border-b border-gray-500 mb-5 col">
-      <input placeholder="Nom" id="name" [formControlName]="'name'" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control  bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
-      <div *ngIf="submitted && f.name.errors" class="text-red-400 text-xl">
-        <div *ngIf="f.name.errors.required">Nom obligatoire</div>
+      <input placeholder="Nom" name="username"
+             [(ngModel)]="form.username"
+             required
+             #username="ngModel"
+             class="form-control  bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
+             type="text" />
+      <div *ngIf="f.submitted && username.errors" class="text-red-400 text-xl">
+        <div *ngIf="username.errors.required">Nom obligatoire</div>
       </div>
     </div>
 
     <div class="flex border-b border-gray-500 mb-5 col">
-      <input placeholder="Mot de passe" id="password" [formControlName]="'password'" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class=" form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" type="password" />
-      <div *ngIf="submitted && f.password.errors" class="text-red-400 text-xl">
-        <div *ngIf="f.password.errors.required">Mot de passe obligatoire</div>
+      <input placeholder="Mot de passe" name="password"
+             [(ngModel)]="form.password"
+             required
+             minlength="6"
+             #password="ngModel"
+             class=" form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full"
+             type="password" />
+      <div *ngIf="f.submitted && password.errors" class="text-red-400 text-xl">
+        <div *ngIf="password.errors.required">Mot de passe obligatoire</div>
       </div>
     </div>
     <div class="flex justify-end w-full">

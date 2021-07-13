@@ -6,6 +6,7 @@ import {ShoppingList} from "../../models/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NeedService} from "../../services/need.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-shopping-list-manager',
@@ -16,7 +17,7 @@ export class ShoppingListManagerComponent implements OnInit {
 
   private _userId:number = 1
   private _products:Product[] = []
-  private _shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[])
+  private _shoppingList:Observable<ShoppingList> = new Observable<ShoppingList>()
   private _formProd:FormGroup;
   private _qte:FormControl
 
@@ -30,9 +31,7 @@ export class ShoppingListManagerComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params =>{
       this._userId = params["user"]
-      this.shoppingListService.get(params["id"]).subscribe(list => {
-        this._shoppingList = list;
-      })
+      this._shoppingList = this.shoppingListService.get(params["id"])
     })
     this.productService.getAll().subscribe(prods => {
       this._products = prods
@@ -55,11 +54,11 @@ export class ShoppingListManagerComponent implements OnInit {
     this._products = value;
   }
 
-  get shoppingList(): ShoppingList {
+  get shoppingList(): Observable<ShoppingList> {
     return this._shoppingList;
   }
 
-  set shoppingList(value: ShoppingList) {
+  set shoppingList(value: Observable<ShoppingList>) {
     this._shoppingList = value;
   }
 
@@ -80,6 +79,6 @@ export class ShoppingListManagerComponent implements OnInit {
   }
 
   remList(id:String){
-    this.shoppingListService.remove(id,this._shoppingList.id.toString()).subscribe(sl => window.location.href = "/dashboard")
+    this._shoppingList.subscribe(sl =>this.shoppingListService.remove(id,sl.id.toString()).subscribe(sl => window.location.href = "/dashboard"))
   }
 }
