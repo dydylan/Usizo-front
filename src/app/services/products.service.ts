@@ -17,4 +17,8 @@ export class ProductsService {
   get(id:String): Observable<Product> {
     return this.http.get<Product>("http://localhost:8080/api/product?id="+id)
   }
+
+  search(name:String): Observable<Product[]>{
+    return this.http.get<Product[]>("http://localhost:8080/api/productByName?name="+name)
+  }
 }

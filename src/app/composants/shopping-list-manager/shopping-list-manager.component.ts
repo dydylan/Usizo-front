@@ -32,7 +32,6 @@ export class ShoppingListManagerComponent implements OnInit {
       this._userId = params["user"]
       this.shoppingListService.get(params["id"]).subscribe(list => {
         this._shoppingList = list;
-        console.log(this._shoppingList.needList)
       })
     })
     this.productService.getAll().subscribe(prods => {
