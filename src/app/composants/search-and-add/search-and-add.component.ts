@@ -5,6 +5,7 @@ import {NeedService} from "../../services/need.service";
 import {ProductsService} from "../../services/products.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-search-and-add',
@@ -13,10 +14,11 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class SearchAndAddComponent implements OnInit {
 
-  private _products:Product[] = []
+  private _products:Observable<Product[]> = new Observable<Product[]>()
   @Input() shoppingListId:number = 0
   private _formProd:FormGroup;
   private _qte:FormControl
+  search:String = ""
 
   constructor(private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
     this._qte=new FormControl('',[Validators.required])
@@ -26,16 +28,14 @@ export class SearchAndAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(prods => {
-      this._products = prods
-    })
+    this._products = this.productService.getAll()
   }
 
-  get products(): Product[] {
+  get products(): Observable<Product[]> {
     return this._products;
   }
 
-  set products(value: Product[]) {
+  set products(value: Observable<Product[]>) {
     this._products = value;
   }
 
@@ -64,6 +64,10 @@ export class SearchAndAddComponent implements OnInit {
       })
 
     })
+  }
+
+  searchProd(){
+    this._products = this.productService.search(this.search)
   }
 
 }
