@@ -4,6 +4,7 @@ import {ShoppingListService} from "../../services/shopping-list.service";
 import {ShoppingList} from "../../models/ShoppingList";
 import {User} from "../../models/User";
 import {Role} from "../../models/Role";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +15,12 @@ export class DashboardComponent implements OnInit {
 
   private _user:User= new User(NaN,"","","",new Role(NaN,""),[])
   private _userLists:ShoppingList[] = []
-  @Input() private _id: String = "1";
-  constructor(private userService:UserService, private shoppingListService:ShoppingListService) {
+
+  constructor(private token: TokenStorageService,private userService:UserService, private shoppingListService:ShoppingListService) {
   }
 
   ngOnInit(): void {
-    this.userService.get(this._id).subscribe(user =>{
+    this.userService.get(this.token.getUser().id).subscribe(user =>{
       this._user = user
       for (let i in user.shoppingLists)
       {

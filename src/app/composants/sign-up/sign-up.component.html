@@ -23,7 +23,6 @@
                name="username"
                [(ngModel)]="form.username"
                #username="ngModel"
-               [ngClass]="{ 'is-invalid': fo.submitted && username.errors }"
                class="form-control bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" required/>
         <div *ngIf="fo.submitted && username.errors" class="text-red-400 text-xs">
           <div *ngIf="username.errors.required">Nom obligatoire</div>
@@ -33,7 +32,7 @@
       <div class="p-3 mx-6 flex border-b border-gray-500">
         <input placeholder="Saisir un mot de passe"
                type="password"
-               [(ngModel)]="form.password"
+               [(ngModel)]="form.password1"
                required
                #password1="ngModel"
                name="password1"
@@ -48,7 +47,7 @@
 
       <div class="p-3 mx-6 flex border-b border-gray-500">
         <input placeholder="Confirmation" type="password"
-               [(ngModel)]="form.password"
+               [(ngModel)]="form.password2"
                required
                #password2="ngModel"
                name="password2"

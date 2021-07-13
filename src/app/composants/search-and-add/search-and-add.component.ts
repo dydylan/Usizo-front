@@ -1,11 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Product} from "../../models/Product";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NeedService} from "../../services/need.service";
 import {ProductsService} from "../../services/products.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ActivatedRoute} from "@angular/router";
+import {EventEmitter} from "@angular/core";
 import {Observable} from "rxjs";
+import {ShoppingList} from "../../models/ShoppingList";
 
 @Component({
   selector: 'app-search-and-add',
@@ -15,7 +17,10 @@ import {Observable} from "rxjs";
 export class SearchAndAddComponent implements OnInit {
 
   private _products:Observable<Product[]> = new Observable<Product[]>()
-  @Input() shoppingListId:number = 0
+  @Input()
+  shoppingList:Observable<ShoppingList> = new Observable<ShoppingList>()
+  @Output()
+  shoppingListChange = new EventEmitter<Observable<ShoppingList>>();
   private _formProd:FormGroup;
   private _qte:FormControl
   search:String = ""
@@ -56,13 +61,9 @@ export class SearchAndAddComponent implements OnInit {
   }
 
   addProd(id:number){
-    this.productService.get(id.toString()).subscribe(prod =>
-    {
-      this.needService.create(this.shoppingListId,id,this._formProd.get('qte')?.value).subscribe(need =>
-      {
-
-      })
-
+    this.shoppingList.subscribe(sl => {
+      this.needService.create(sl.id,id,this._formProd.get('qte')?.value).subscribe(() =>
+        this.shoppingListChange.emit(this.shoppingListService.get(sl.id.toString())))
     })
   }
 
