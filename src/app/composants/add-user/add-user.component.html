@@ -1,0 +1,75 @@
+<input
+  type="image"
+  class="plus-img"
+  src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+  alt="plus image"
+  (click)="displayModal()"
+/>
+
+<!-- The Modal -->
+<div id="myModal" class="modal row" [style.display]="varDisplay">
+
+  <!-- Modal content -->
+  <div class="modal-content col">
+    <!--          <button (click)="hideModal()" class="mt-5">Fermer le pop-up</button>-->
+    <div class="row justify-end">
+      <span class="close mb-5" (click)="hideModal()">&times;</span>
+    </div>
+    <div class="bg-white flex items-center rounded-full search-bar">
+      <input
+        id="search"
+        class="
+          rounded-l-full
+          w-full
+          py-4
+          px-6
+          text-gray-700
+          leading-tight
+          focus:outline-none
+        "
+        type="text"
+        placeholder="Nom de l'utilisateur"
+      />
+<!--        [(ngModel)]="search"-->
+<!--        (ngModelChange)="searchProd()"-->
+      <div class="p-1">
+        <button
+          class="
+            bg-blue-300
+            text-white
+            rounded-full
+            p-2
+            hover:bg-blue-400
+            focus:outline-none
+            w-12
+            h-12
+            flex
+            items-center
+            justify-center
+          "
+        >
+          <input
+            type="image"
+            class="search-img"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Search_Noun_project_15028.svg/1046px-Search_Noun_project_15028.svg.png"
+            alt="search image"
+          />
+<!--            (click)="searchProd()"-->
+        </button>
+      </div>
+    </div>
+    <div class="row user-summary-section">
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+      <app-user-summary></app-user-summary>
+    </div>
+
+  </div>
+
+</div>
