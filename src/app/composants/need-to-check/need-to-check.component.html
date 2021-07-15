@@ -1,16 +1,18 @@
-<article class="row items-center flex-wrap justify-between need-to-check-article">
-  <div class="row flex-wrap items-center">
-    <input type="checkbox">
-      <img
-        class="product-img"
-        src="https://cdn.shopify.com/s/files/1/0489/7544/6170/products/download-2020-10-22T193626.586-min.jpg?v=1613381919"
-        alt="product image"
-      />
-      <p class="quantity">x11</p>
-      <p>Bolognaise</p>
+<div>
+  <div class="row flex-xrap justify-end items-center">
+    <p class="w-5/12">{{shoppingList.name}}</p>
+    <button routerLink="/shopping-list-manager/{{userId}}/{{shoppingList.id}}">Modifier</button>
   </div>
-  <a
-    routerLink="/shopping-list-manager"
-  ><button>Modifier</button>
-  </a>
-</article>
+  <div class="overflow-container">
+  <article class="row flex-wrap items-center need-to-check-article" *ngFor="let need of shoppingList.needList">
+    <input type="checkbox" [checked]="need.founded" (change)="checkNeed(need.id,!need.founded)">
+    <img
+      class="product-img"
+      src="{{need.product.imgUrl}}"
+      alt="product image"
+    />
+    <p class="quantity">x{{need.quantity}}</p>
+    <p>{{need.product.nom}}</p>
+  </article>
+  </div>
+</div>

@@ -1,37 +1,43 @@
+<section class="login-section row justify-center">
+  <form *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        class="col items-center">
+    <h2>Se connecter</h2>
 
-<form [formGroup]="connectionForm" (ngSubmit)="onSubmit()" class="h-screen w-full">
-
-<div class="h-screen w-full section-login">
-  <div class="bg-gray-800 mx-auto max-w-md">
-    <div class="p-12">
-      <p class="text-5xl pt-10 text-yellow-500 font-bold">
-        Bienvenue sur Usizo
-      </p>
-      <p class="text-xl py-3 text-gray-400 font-semibold">Connectez-vous pour continuer</p>
-    </div>
-    <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
-      <div class="p-3 mx-6 border-b border-gray-500">
-        <input placeholder="Nom" id="name" [formControlName]="'name'" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control  bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
-        <div *ngIf="submitted && f.name.errors" class="text-red-400 text-xs">
-          <div *ngIf="f.name.errors.required">Nom obligatoire</div>
-        </div>
-      </div>
-
-      <div class="p-3 mx-6 flex border-b border-gray-500">
-        <input placeholder="Mot de passe" id="password" [formControlName]="'password'" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class=" form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" type="password" />
-        <div *ngIf="submitted && f.password.errors" class="text-red-400 text-xs">
-          <div *ngIf="f.password.errors.required">Mot de passe obligatoire</div>
-        </div>
+  <div class="w-full">
+    <div class="border-b border-gray-500 mb-5 col">
+      <input placeholder="Nom" name="username"
+             [(ngModel)]="form.username"
+             required
+             #username="ngModel"
+             class="form-control  bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
+             type="text" />
+      <div *ngIf="f.submitted && username.errors" class="text-red-400 text-xl">
+        <div *ngIf="username.errors.required">Nom obligatoire</div>
       </div>
     </div>
 
-    <div class="w-full p-12">
-      <button class=" bg-yellow-500 p-3 rounded-3xl w-full h-full hover:bg-yellow-600"> Se connecter</button>
-      <p class="mx-auto text-center mt-3 text-gray-400">Pas encore de compte ?  <a routerLink="/sign-up" class="text-md font-semibold">S'enregistrer</a> </p>
+    <div class="flex border-b border-gray-500 mb-5 col">
+      <input placeholder="Mot de passe" name="password"
+             [(ngModel)]="form.password"
+             required
+             minlength="6"
+             #password="ngModel"
+             class=" form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full"
+             type="password" />
+      <div *ngIf="f.submitted && password.errors" class="text-red-400 text-xl">
+        <div *ngIf="password.errors.required">Mot de passe obligatoire</div>
+      </div>
+    </div>
+    <div class="flex justify-end w-full">
+      <button type="submit"> Se connecter</button>
     </div>
   </div>
-</div>
 
-</form>
+  </form>
+</section>
 
 

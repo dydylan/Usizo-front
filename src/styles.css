@@ -37,19 +37,12 @@ h1,h2{
   padding: 1rem;
 }
 
-.dashboard-section, .shopping-list-manager, .section-login, .section-signup, .search-and-add{
-  padding:2rem;
-}
-
-.search-and-add, .delete-btn, .section-login, .section-sign-up .section-need-to-modify{
+.search-and-add, .delete-btn, .login-section, .signup-section .section-need-to-modify{
   margin:2rem;
 }
 
-.shopping-list-summary-article, .need-to-check-article, .need-to-modify-article{
+.shopping-list-summary-article, .need-to-modify-article{
   margin: 0 2rem 0 2rem;
-}
-.shopping-list-summary-article{
-  padding: 1rem;
 }
 
 
@@ -86,12 +79,13 @@ footer {
 
 .user-img,
 .product-img {
-  width: 100px;
+  height: 10rem;
   margin: 1rem;
 }
 
 .user-img{
   border-radius:50%;
+  width: 10rem;
 }
 
 .check-img,
@@ -117,7 +111,12 @@ button{
   color:white;
   font-weight: 600;
   background-color: var(--orange);
-  border-radius:0.5rem;
+  border-radius:1rem;
+  @apply bg-yellow-400 hover:bg-yellow-600;
+}
+
+a{
+  @apply text-yellow-400 hover:text-yellow-600;
 }
 
 .need-to-check-article{
@@ -153,29 +152,86 @@ button{
   transform: scale(1.5);
 }
 
-.need-to-check-article,
-.need-to-modify-article{
+.need-to-modify-article, .need-to-add-article{
   border-bottom: dashed var(--orange);
   border-radius: 0;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .app-need-to-check:last-child .need-to-check-article,
-.app-need-to-modify:last-child .need-to-modify-article{
+.app-need-to-modify:last-child .need-to-modify-article,
+.app-need-to-add:last-child .need-to-add-article{
   border-bottom: none;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .need-to-check-section,
 .need-to-modify-section,
 .search-and-add-section,
-.shopping-list-summary-article
+.signup-section form,
+.login-section form,
+.shopping-list-summary-article,
+.modal-content
 {
   margin: 1rem;
   box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);
   border-radius: 1rem;
 }
 
-.need-to-modify-section, .search-and-add-section{
+.need-to-modify-section, .search-and-add-section, .dashboard-section, .shopping-list-manager,
+.login-section, .signup-section, .search-and-add, .need-to-check-section, .shopping-list-summary-article,
+.signup-section form, .login-section form{
   padding: 2rem;
+}
+
+.overflow-container {
+  height: 42rem;
+  overflow-y: scroll;
+}
+
+.shopping-list-summary-article:hover{
+  box-shadow: 0 0 4.8rem #f2c97d;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: white;
+  padding:2rem;
+  border: none;
+}
+
+.close {
+  color: #aaaaaa;
+  font-size: 2.8rem;
+  font-weight: bold;
+  cursor:pointer;
+}
+
+.user-summary-section{
+  max-width:55rem;
+  flex-wrap: wrap;
+  margin:2rem 1rem 2rem 1rem;
+}
+
+.user-name{
+  max-width: 10rem;
+  text-align:center;
 }

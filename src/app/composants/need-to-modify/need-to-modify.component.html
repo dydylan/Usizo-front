@@ -1,17 +1,18 @@
-<article class="row items-center flex-wrap justify-between need-to-modify-article w-full">
+<article class="row items-center flex-wrap justify-between need-to-modify-article w-full" *ngFor="let need of (shoppingList | async)?.needList">
   <div class="row flex-wrap items-center">
     <img
-    class="product-img"
-    src="https://cdn.shopify.com/s/files/1/0489/7544/6170/products/download-2020-10-22T193626.586-min.jpg?v=1613381919"
-    alt="product image"
+      class="product-img"
+      src="{{need.product.imgUrl}}"
+      alt="product image"
     />
-    <p class="quantity">x11</p>
-    <p>Bolognaise</p>
+    <p class="quantity">x{{need.quantity}}</p>
+    <p>{{need.product.nom}}</p>
   </div>
-    <input
+  <input
     type="image"
     class="minus-img"
     src="https://i.ibb.co/wRTBjFr/minus-icon.png"
     alt="minus image"
-    />
+    (click)="remNeed(need.id)"
+  />
 </article>

@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Product} from "../../models/Product";
-import {ProductsService} from "../../services/products.service";
-import {ActivatedRoute} from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
 import {ShoppingList} from "../../models/ShoppingList";
+import {UserService} from "../../services/user.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
-import {listLazyRoutes} from "@angular/compiler/src/aot/lazy_routes";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Need} from "../../models/Need";
-import {NeedService} from "../../services/need.service";
+import {User} from "../../models/User";
+import {Role} from "../../models/Role";
 
 @Component({
   selector: 'app-shopping-list-summary',
@@ -16,72 +12,15 @@ import {NeedService} from "../../services/need.service";
 })
 export class ShoppingListSummaryComponent implements OnInit {
 
-  private _products:Product[] = []
-  private _shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[])
-  private _formProd:FormGroup;
-  private _qte:FormControl
 
-  constructor(private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
-    this._qte=new FormControl('',[Validators.required])
-    this._formProd=this.formBuilder.group({
-      qte:this._qte
-    })
+  @Input()
+  shoppingList:ShoppingList = new ShoppingList(NaN,"",[],[])
+  @Input()
+  curentUser:User= new User(NaN,"","","",new Role(NaN,""),[])
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe(params =>{
-      this.shoppingListService.get(params["id"]).subscribe(list => {
-        this._shoppingList = list;
-        console.log(this._shoppingList.needList)
-      })
-    })
-    this.productService.getAll().subscribe(prods => {
-      this._products = prods
-    })
-  }
-
-  get products(): Product[] {
-    return this._products;
-  }
-
-  set products(value: Product[]) {
-    this._products = value;
-  }
-
-  get shoppingList(): ShoppingList {
-    return this._shoppingList;
-  }
-
-  set shoppingList(value: ShoppingList) {
-    this._shoppingList = value;
-  }
-
-  get formProd(): FormGroup {
-    return this._formProd;
-  }
-
-  set formProd(value: FormGroup) {
-    this._formProd = value;
-  }
-
-  get qte(): FormControl {
-    return this._qte;
-  }
-
-  set qte(value: FormControl) {
-    this._qte = value;
-  }
-
-  addProd(id:number){
-    this.productService.get(id.toString()).subscribe(prod =>
-    {
-      this.needService.create(this._shoppingList.id,id,this._formProd.get('qte')?.value).subscribe(need =>
-      {
-
-      })
-
-    })
   }
 
 }
-
