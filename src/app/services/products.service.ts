@@ -11,14 +11,14 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>("http://localhost:8080/api/products")
+    return this.http.get<Product[]>("https://usizo-java.herokuapp.com/api/products")
   }
 
   get(id:String): Observable<Product> {
-    return this.http.get<Product>("http://localhost:8080/api/product?id="+id)
+    return this.http.get<Product>("https://usizo-java.herokuapp.com/api/product?id="+id)
   }
 
   search(name:String): Observable<Product[]>{
-    return this.http.get<Product[]>("http://localhost:8080/api/productByName?name="+name)
+    return this.http.get<Product[]>("https://usizo-java.herokuapp.com/api/productByName?name="+name)
   }
 }

@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {User} from "../models/User";
 import {Product} from "../models/Product";
 
-const API_URL = 'http://localhost:8080/api/test/';
+const API_URL = 'https://usizo-java.herokuapp.com/api/test/';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   get(id:String): Observable<User> {
-    return this.http.get<User>("http://localhost:8080/api/user?id="+id)
+    return this.http.get<User>("https://usizo-java.herokuapp.com/api/user?id="+id)
   }
 
   getPublicContent(): Observable<any> {
@@ -34,6 +34,6 @@ export class UserService {
   }
 
   search(name:String): Observable<User[]>{
-    return this.http.get<User[]>("http://localhost:8080/api/usersByName?name="+name)
+    return this.http.get<User[]>("https://usizo-java.herokuapp.com/api/usersByName?name="+name)
   }
 }
