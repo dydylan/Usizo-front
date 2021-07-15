@@ -1,0 +1,17 @@
+<div class="row flex-wrap items-center" >
+  <form (ngSubmit)="addProd()">
+    <input
+      type="image"
+      class="plus-img mr-3"
+      src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
+      alt="plus image"
+    />
+    <input type="number" [(ngModel)]="form.qte" class="mr-3 bg-gray-300 text-right" name="custom-input-number" value="0" size="2"/>
+  </form>
+  <img
+    class="product-img mr-3"
+    src="{{prod.imgUrl}}"
+    alt="image du produit"
+  />
+  <p class="mr-3">{{prod.nom}}</p>
+</div>

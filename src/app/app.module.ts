@@ -20,6 +20,7 @@ import { NeedToAddComponent } from './composants/need-to-add/need-to-add.compone
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AddUserComponent } from './composants/add-user/add-user.component';
 import { UserSummaryComponent } from './composants/user-summary/user-summary.component';
+import { ProductToAddComponent } from './product-to-add/product-to-add.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserSummaryComponent } from './composants/user-summary/user-summary.com
     NeedToAddComponent,
     AddUserComponent,
     UserSummaryComponent,
+    ProductToAddComponent,
   ],
   imports: [BrowserModule,
     HttpClientModule, AppRoutingModule, FormsModule,FormsModule, ReactiveFormsModule],

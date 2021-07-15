@@ -51,6 +51,10 @@ footer {
   color: white;
   background-color: var(--orange);
   padding: 1rem;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  bottom: 0;
+  width: 100%;
 }
 
 .menu-item{
