@@ -1,14 +1,19 @@
 <article class="col items-center shopping-list-summary-article">
   <p class="text-black">{{shoppingList.name}}</p>
-  <div class="row justify-between items-start flex-wrap">
-    <ul class="row flex-wrap">
-      <li *ngFor="let user of shoppingList.members">
-        <img
-          src="{{user.imgUrl}}"
-          class="user-img"
-          alt="user image"
-        />
-      </li>
-    </ul>
+  <div class="row items-start flex-wrap">
+    <article *ngFor="let user of shoppingList.members">
+      <img
+        src="{{user.imgUrl}}"
+        class="user-img"
+        alt="user image"
+      />
+      <p>Loup Garou</p>
+    </article>
+    <app-user-summary></app-user-summary>
+    <app-user-summary></app-user-summary>
+    <app-user-summary></app-user-summary>
+    <app-user-summary></app-user-summary>
+    <app-user-summary></app-user-summary>
+    <app-user-summary></app-user-summary>
   </div>
 </article>
