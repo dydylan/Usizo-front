@@ -1,15 +1,15 @@
-<section class="signup-section row justify-center">
+<section class="signup-section row justify-center items-center">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="col items-center">
     <h2>S'inscrire</h2>
     <div class="border-b border-gray-500 mb-2 col">
-      <input placeholder="Nom" id="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" [formControlName]="'name'" required/>
+      <input placeholder="Nom" id="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control bg-transparent w-full focus:outline-none focus:rang" type="text" [formControlName]="'name'" required/>
       <div *ngIf="submitted && f.name.errors" class="text-red-400 text-xl">
         <div *ngIf="f.name.errors.required">Nom obligatoire</div>
       </div>
     </div>
 
     <div class="flex border-b border-gray-500 mb-2 col">
-      <input placeholder="Saisir un mot de passe" [formControlName]="'password1'" name="password1" class="form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" minlength="4" [ngClass]="{ 'is-invalid': submitted && f.password1.errors }" type="password" />
+      <input placeholder="Saisir un mot de passe" [formControlName]="'password1'" name="password1" class="form-control bg-transparent focus:outline-none focus:rang w-full" minlength="4" [ngClass]="{ 'is-invalid': submitted && f.password1.errors }" type="password" />
       <div *ngIf="submitted && f.password1.errors" class="text-red-400 text-xl">
         <div *ngIf="f.password1.errors.required">Mot de passe obligatoire</div>
         <div *ngIf="f.password1.errors.minlength">Il doit contenir au moins 4 caractères</div>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="flex border-b border-gray-500 mb-2 col">
-      <input class="flex border-b border-gray-500" placeholder="Confirmation" [formControlName]="'password2'" name="password2" class="form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" type="password" />
+      <input class="flex border-b border-gray-500" placeholder="Confirmation" [formControlName]="'password2'" name="password2" class="form-control bg-transparent focus:outline-none focus:rang w-full" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" type="password" />
       <div *ngIf="submitted && f.password2.errors" class="text-red-400 text-xl">
         <div *ngIf="f.password2.errors.required">Confirmation obligatoire</div>
         <div *ngIf="f.password2.errors.mustMatch">Les deux mots de passe doivent correspondrent</div>

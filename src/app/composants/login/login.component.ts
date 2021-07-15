@@ -49,4 +49,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  onReset() {
+    this.form.submitted = false;
+    this.form.reset();
+  }
+
 }
