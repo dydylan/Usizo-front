@@ -14,7 +14,12 @@ export class SignUpComponent implements OnInit {
     username: null,
     password1: null,
     password2: null,
-    validator: MustMatch('password1', 'password2')
+    validator: MustMatch('password1', 'password2'),
+    reset(){
+      this.username = null
+      this.password1 = null
+      this.password2 = null
+    }
   };
   isSuccessful = false;
   isSignUpFailed = false;
@@ -42,7 +47,6 @@ export class SignUpComponent implements OnInit {
   }
 
   onReset() {
-    this.form.submitted = false;
     this.form.reset();
   }
 
