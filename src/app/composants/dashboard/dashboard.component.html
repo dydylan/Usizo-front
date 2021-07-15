@@ -3,7 +3,7 @@
   <div class="grid md:grid-cols-12 items-start">
     <div class="col sm:col-span-4 md:col-span-6">
       <section class="col shopping-list-summary-section overflow-container px-20 pb-20">
-          <app-shopping-list-summary [shoppingList]="sl" class="app-shopping-list-summary" *ngFor="let sl of userLists" routerLink='./need-to-check/{{user.id}}/{{sl.id}}'></app-shopping-list-summary>
+          <app-shopping-list-summary [shoppingList]="sl" [curentUser]="user" class="app-shopping-list-summary" *ngFor="let sl of userLists" routerLink='./need-to-check/{{user.id}}/{{sl.id}}'></app-shopping-list-summary>
       </section>
       <div class="flex justify-center">
         <input

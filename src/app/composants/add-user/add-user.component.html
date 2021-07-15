@@ -11,7 +11,6 @@
 
   <!-- Modal content -->
   <div class="modal-content col">
-    <!--          <button (click)="hideModal()" class="mt-5">Fermer le pop-up</button>-->
     <div class="row justify-end">
       <span class="close mb-5" (click)="hideModal()">&times;</span>
     </div>
@@ -29,9 +28,9 @@
         "
         type="text"
         placeholder="Nom de l'utilisateur"
+        [(ngModel)]="search"
+        (ngModelChange)="searchUser()"
       />
-<!--        [(ngModel)]="search"-->
-<!--        (ngModelChange)="searchProd()"-->
       <div class="p-1">
         <button
           class="
@@ -53,21 +52,13 @@
             class="search-img"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Search_Noun_project_15028.svg/1046px-Search_Noun_project_15028.svg.png"
             alt="search image"
+            (click)="searchUser()"
           />
-<!--            (click)="searchProd()"-->
         </button>
       </div>
     </div>
     <div class="row user-summary-section">
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
-      <app-user-summary></app-user-summary>
+      <app-user-summary *ngFor="let user of users|async" (click)="addUser(user.id)" [user]="user"></app-user-summary>
     </div>
 
   </div>
