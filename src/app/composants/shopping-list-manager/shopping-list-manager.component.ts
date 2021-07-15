@@ -7,6 +7,7 @@ import {ShoppingListService} from "../../services/shopping-list.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NeedService} from "../../services/need.service";
 import {Observable} from "rxjs";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-shopping-list-manager',
@@ -21,7 +22,7 @@ export class ShoppingListManagerComponent implements OnInit {
   private _formProd:FormGroup;
   private _qte:FormControl
 
-  constructor(private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
+  constructor(private token: TokenStorageService,private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
     this._qte=new FormControl('',[Validators.required])
     this._formProd=this.formBuilder.group({
       qte:this._qte
@@ -29,8 +30,8 @@ export class ShoppingListManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.token.getUser().id
     this.activeRoute.params.subscribe(params =>{
-      this._userId = params["user"]
       this._shoppingList = this.shoppingListService.get(params["id"])
     })
     this.productService.getAll().subscribe(prods => {
@@ -78,7 +79,15 @@ export class ShoppingListManagerComponent implements OnInit {
     this._qte = value;
   }
 
-  remList(id:String){
-    this._shoppingList.subscribe(sl =>this.shoppingListService.remove(id,sl.id.toString()).subscribe(sl => window.location.href = "/dashboard"))
+  remList(id:number){
+    this._shoppingList.subscribe(sl =>this.shoppingListService.remUser(id,sl.id).subscribe(() => window.location.href = "/dashboard"))
+  }
+
+
+  remUser(id:number){
+    this.shoppingList.subscribe(sl => {
+      this._shoppingList = this.shoppingListService.remUser(id,sl.id)
+      this.shoppingList.subscribe()
+      })
   }
 }

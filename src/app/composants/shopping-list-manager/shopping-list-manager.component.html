@@ -5,16 +5,14 @@
     </div>
     <article class="row flex justify-center items-center user-article">
       <ul class="row">
-        <li *ngFor="let user of (shoppingList|async)?.members">
-          <img
-            src="{{user.imgUrl}}"
-            class="user-img"
-            alt="user image"
-          />
-        </li>
+        <ng-container *ngFor="let user of (shoppingList |async)?.members">
+          <ng-container *ngIf="userId != user.id">
+            <span class="close mb-5" (click)="remUser(user.id)">&times;</span>
+            <app-user-summary [user]="user"></app-user-summary></ng-container>
+        </ng-container>
       </ul>
 
-      <app-add-user></app-add-user>
+      <app-add-user [(shoppingList)]="shoppingList"></app-add-user>
 
     </article>
     <div class="grid md:grid-cols-12">
@@ -29,7 +27,7 @@
 
     </div>
     <div class="flex justify-end">
-      <button class="delete-btn" (click)="remList(userId.toString())">Supprimer la liste</button>
+      <button class="delete-btn" (click)="remList(userId)">Supprimer la liste</button>
     </div>
   </section>
 </div>

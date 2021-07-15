@@ -63,7 +63,7 @@ export class SearchAndAddComponent implements OnInit {
   addProd(id:number){
     this.shoppingList.subscribe(sl => {
       this.needService.create(sl.id,id,this._formProd.get('qte')?.value).subscribe(() =>
-        this.shoppingListChange.emit(this.shoppingListService.get(sl.id.toString())))
+        this.shoppingListChange.emit(this.shoppingListService.get(sl.id)))
     })
   }
 
