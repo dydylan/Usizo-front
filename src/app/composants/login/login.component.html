@@ -1,10 +1,10 @@
-<section class="login-section row justify-center">
+<section class="login-section row justify-center items-center">
   <form *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
         novalidate
-        class="col items-center">
+        class="col">
     <h2>Se connecter</h2>
 
   <div class="w-full">

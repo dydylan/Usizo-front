@@ -1,6 +1,6 @@
 <article class="col items-center shopping-list-summary-article">
-  <p class="text-black">{{shoppingList.name}}</p>
-  <div class="row items-start flex-wrap">
+  <h3>{{shoppingList.name}}</h3>
+  <div class="row items-center justify-center flex-wrap">
     <article *ngFor="let user of shoppingList.members">
       <img
         src="{{user.imgUrl}}"
@@ -15,5 +15,6 @@
     <app-user-summary></app-user-summary>
     <app-user-summary></app-user-summary>
     <app-user-summary></app-user-summary>
+    <app-add-user></app-add-user>
   </div>
 </article>

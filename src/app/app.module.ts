@@ -15,7 +15,6 @@ import { NeedToCheckComponent } from './composants/need-to-check/need-to-check.c
 import { NeedToModifyComponent } from './composants/need-to-modify/need-to-modify.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { NeedToAddComponent } from './composants/need-to-add/need-to-add.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AddUserComponent } from './composants/add-user/add-user.component';
@@ -34,7 +33,6 @@ import { UserSummaryComponent } from './composants/user-summary/user-summary.com
     SearchAndAddComponent,
     NeedToCheckComponent,
     NeedToModifyComponent,
-    NeedToAddComponent,
     AddUserComponent,
     UserSummaryComponent,
   ],

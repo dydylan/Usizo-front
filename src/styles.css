@@ -58,6 +58,7 @@ footer {
   font-weight: 600;
   padding: 1rem 2rem;
   text-transform: uppercase;
+  cursor:pointer;
 }
 
 .menu-item .active,
@@ -91,7 +92,8 @@ footer {
 .check-img,
 .plus-img,
 .minus-img {
-  width: 50px;
+  width: 5rem;
+  margin: 1rem;
 }
 
 .search-img {
@@ -152,18 +154,27 @@ a{
   transform: scale(1.5);
 }
 
-.need-to-modify-article, .need-to-add-article{
+.need-to-modify-article, .need-to-add-article,
+.need-to-check-article
+{
   border-bottom: dashed var(--orange);
   border-radius: 0;
   padding: 1rem;
 }
 
-.app-need-to-check:last-child .need-to-check-article,
-.app-need-to-modify:last-child .need-to-modify-article,
-.app-need-to-add:last-child .need-to-add-article{
+.need-to-modify-article:last-child,
+.need-to-check-article:last-child,
+.need-to-add-article:last-child{
   border-bottom: none;
   padding: 1rem;
 }
+
+/*.app-need-to-check:last-child .need-to-check-article,*/
+/*.app-need-to-modify:last-child .need-to-modify-article,*/
+/*.app-need-to-add:last-child .need-to-add-article{*/
+/*  border-bottom: none;*/
+/*  padding: 1rem;*/
+/*}*/
 
 .need-to-check-section,
 .need-to-modify-section,
@@ -185,8 +196,20 @@ a{
 }
 
 .overflow-container {
-  height: 42rem;
   overflow-y: scroll;
+}
+
+.dashboard-section .overflow-container{
+  height: 45rem;
+}
+
+.need-to-modify-section .overflow-container{
+  height: 55rem;
+}
+
+.search-and-add-section .overflow-container
+{
+  height: 42rem;
 }
 
 .shopping-list-summary-article:hover{
@@ -229,9 +252,27 @@ a{
   max-width:55rem;
   flex-wrap: wrap;
   margin:2rem 1rem 2rem 1rem;
+  justify-content: center;
 }
 
 .user-name{
   max-width: 10rem;
   text-align:center;
+  margin: 1rem;
+}
+
+.delete-btn:hover{
+  background-color: #AF1638;
+}
+
+.login-section {
+  height: 80vh;
+}
+
+.signup-section {
+  height: 60vh;
+}
+
+.dashboard-section {
+  height: 85vh;
 }

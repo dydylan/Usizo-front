@@ -1,9 +1,7 @@
 <div class="row justify-between navbar">
   <div class="row">
     <div class="mr-3">
-      <a routerLink="/dashboard"
-      ><img class="usizo-img" src="assets/images/logo2.png" alt="logo-usizo"
-      /></a>
+      <a routerLink="/dashboard"><img class="usizo-img" src="assets/images/logo2.png" alt="logo-usizo" /></a>
     </div>
   </div>
   <div class="row flex items-center">
@@ -11,9 +9,10 @@
       <a routerLink="/login" class="menu-item">Se connecter</a>
     </div>
     <div class="mr-5">
-      <a routerLink="/sign-up" class="menu-item"
-      >S'inscrire</a
-      >
+      <a routerLink="/sign-up" class="menu-item">S'inscrire</a>
+    </div>
+    <div>
+      <a class="menu-item"(click)="logout()">Se déconnecter</a>
     </div>
   </div>
 </div>

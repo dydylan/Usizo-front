@@ -20,7 +20,32 @@
     <div class="grid md:grid-cols-12">
       <section class="col sm:col-span-4 md:col-span-6 need-to-modify-section">
         <h2>Modifier et enlever des besoins</h2>
-        <app-need-to-modify class="app-need-to-modify row justify-between items-center overflow-container" [(shoppingList)]="shoppingList" ></app-need-to-modify>
+
+        <div class="overflow-container">
+          <article class="row items-center flex-wrap justify-between need-to-modify-article w-full" *ngFor="let need of (shoppingList | async)?.needList">
+            <div class="row flex-wrap items-center">
+              <img
+                class="product-img"
+                src="{{need.product.imgUrl}}"
+                alt="product image"
+              />
+              <p class="quantity">x{{need.quantity}}</p>
+              <p>{{need.product.nom}}</p>
+            </div>
+            <input
+              type="image"
+              class="minus-img"
+              src="https://i.ibb.co/wRTBjFr/minus-icon.png"
+              alt="minus image"
+            />
+<!--              (click)="remNeed(need.id)"-->
+<!--            />-->
+          </article>
+        </div>
+
+
+
+<!--        <app-need-to-modify class="app-need-to-modify flex-wrap overflow-container" [(shoppingList)]="shoppingList" ></app-need-to-modify>-->
       </section>
       <section class="col sm:col-span-4 md:col-span-6 search-and-add-section">
         <app-search-and-add [(shoppingList)]="shoppingList"></app-search-and-add>
