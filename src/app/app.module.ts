@@ -46,6 +46,5 @@ import { ProductToAddComponent } from './product-to-add/product-to-add.component
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  static API_URL: String = "https://usizo-java.herokuapp.com/"
 }
 
