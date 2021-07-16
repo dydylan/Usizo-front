@@ -11,10 +11,12 @@ html {
   font-size: .625em; /* fallback IE8+ */
   font-size: calc(1em * .625); /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   font-size:2rem;
+  height: 100%;
 }
 
 h1 {
@@ -45,7 +47,14 @@ h1,h2{
   margin: 0 2rem 0 2rem;
 }
 
+.mainRouter {
+  height: 90%;
+  overflow-y: scroll;
+}
 
+app-header{
+  height: 6%;
+}
 
 footer {
   color: white;
@@ -54,6 +63,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 4%;
 }
 
 .menu-item{

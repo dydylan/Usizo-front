@@ -40,8 +40,9 @@ export class LoginComponent implements OnInit {
         window.location.href="/dashboard"
       },
       err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = "Utilisateur Introuvable";
         this.isLoginFailed = true;
+        console.log(this.errorMessage)
       }
     );
   }
