@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ShoppingList} from "../../models/ShoppingList";
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
       this._user = user
       for (let i in user.shoppingLists)
       {
-        this.shoppingListService.get(user.shoppingLists[i].toString()).subscribe(sl =>this._userLists.push(sl))
+        this.shoppingListService.get(user.shoppingLists[i]).subscribe(sl =>this._userLists.push(sl))
       }
     })
   }

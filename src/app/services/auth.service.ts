@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {AppModule} from "../app.module";
+import {API_URL} from "../../environments/environment";
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = API_URL + '/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

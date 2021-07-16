@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AddUserComponent } from './composants/add-user/add-user.component';
 import { UserSummaryComponent } from './composants/user-summary/user-summary.component';
+import {NeedToAddComponent } from './composants/need-to-add/need-to-add.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +34,16 @@ import { UserSummaryComponent } from './composants/user-summary/user-summary.com
     SearchAndAddComponent,
     NeedToCheckComponent,
     NeedToModifyComponent,
+    NeedToAddComponent,
     AddUserComponent,
     UserSummaryComponent,
+    NeedToAddComponent,
   ],
   imports: [BrowserModule,
     HttpClientModule, AppRoutingModule, FormsModule,FormsModule, ReactiveFormsModule],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
 

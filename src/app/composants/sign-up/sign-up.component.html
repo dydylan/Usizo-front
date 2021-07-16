@@ -1,36 +1,64 @@
-<section class="signup-section row justify-center items-center">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="col items-center">
+<section class="signup-section row justify-center">
+  <form *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="fo.form.valid && onSubmit()"
+        #fo="ngForm"
+        novalidate
+        class="col items-center">
     <h2>S'inscrire</h2>
     <div class="border-b border-gray-500 mb-2 col">
-      <input placeholder="Nom" id="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control bg-transparent w-full focus:outline-none focus:rang" type="text" [formControlName]="'name'" required/>
-      <div *ngIf="submitted && f.name.errors" class="text-red-400 text-xl">
-        <div *ngIf="f.name.errors.required">Nom obligatoire</div>
+      <input placeholder="Nom" type="text"
+             name="username"
+             [(ngModel)]="form.username"
+             #username="ngModel"
+             class="form-control bg-transparent  w-full focus:outline-none focus:rang" required/>
+      <div *ngIf="fo.submitted && username.errors" class="text-red-400 text-xl">
+        <div *ngIf="username.errors.required">Nom obligatoire</div>
       </div>
     </div>
 
     <div class="flex border-b border-gray-500 mb-2 col">
-      <input placeholder="Saisir un mot de passe" [formControlName]="'password1'" name="password1" class="form-control bg-transparent focus:outline-none focus:rang w-full" minlength="4" [ngClass]="{ 'is-invalid': submitted && f.password1.errors }" type="password" />
-      <div *ngIf="submitted && f.password1.errors" class="text-red-400 text-xl">
-        <div *ngIf="f.password1.errors.required">Mot de passe obligatoire</div>
-        <div *ngIf="f.password1.errors.minlength">Il doit contenir au moins 4 caractères</div>
+      <input placeholder="Saisir un mot de passe"
+             type="password"
+             [(ngModel)]="form.password1"
+             required
+             #password1="ngModel"
+             name="password1"
+             class="form-control bg-transparent focus:outline-none focus:rang w-full"
+             minlength="4"
+             [ngClass]="{ 'is-invalid': fo.submitted && password1.errors }"/>
+      <div *ngIf="fo.submitted && password1.errors" class="text-red-400 text-xl">
+        <div *ngIf="password1.errors.required">Mot de passe obligatoire</div>
+        <div *ngIf="password1.errors.minlength">Il doit contenir au moins 4 caractères</div>
       </div>
     </div>
 
     <div class="flex border-b border-gray-500 mb-2 col">
-      <input class="flex border-b border-gray-500" placeholder="Confirmation" [formControlName]="'password2'" name="password2" class="form-control bg-transparent focus:outline-none focus:rang w-full" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" type="password" />
-      <div *ngIf="submitted && f.password2.errors" class="text-red-400 text-xl">
-        <div *ngIf="f.password2.errors.required">Confirmation obligatoire</div>
-        <div *ngIf="f.password2.errors.mustMatch">Les deux mots de passe doivent correspondrent</div>
+      <input placeholder="Confirmation" type="password"
+             [(ngModel)]="form.password2"
+             required
+             #password2="ngModel"
+             name="password2"
+             class="form-control bg-transparent focus:outline-none focus:rang w-full"
+             minlength="4"
+             [ngClass]="{ 'is-invalid': fo.submitted && password2.errors }"/>
+      <div *ngIf="fo.submitted && password2.errors" class="text-red-400 text-xl">
+        <div *ngIf="password2.errors.required">Confirmation obligatoire</div>
+        <div *ngIf="password2.errors.mustMatch">Les deux mots de passe doivent correspondrent</div>
       </div>
     </div>
     <div class="flex justify-end w-full mt-4 mb-5">
       <button type="submit"> S'inscrire</button>
     </div>
 
-    <p type="reset" class="mt-3 text-yellow-400 hover:text-yellow-600 cursor-pointer" (click)="onReset()">Effacer le formulaire</p>
+    <p type="reset" class="mt-3 text-yellow-400 hover:text-yellow-600 cursor-pointer" (click)="onReset()">Effacer le
+      formulaire</p>
     <div class="row">
       <p class="text-gray-400 mr-3">Déjà un compte ? </p>
       <p><a routerLink="/login">Se connecter</a></p>
+    </div>
+    <div class="alert alert-warning" *ngIf="fo.submitted && isSignUpFailed">
+      Signup failed!<br/>{{ errorMessage }}
     </div>
 
   </form>

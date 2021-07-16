@@ -28,7 +28,7 @@ export class NeedToModifyComponent implements OnInit {
         .subscribe(() =>
           this.shoppingListChange.emit(
             this.shoppingListService.get(
-              sl.id.toString()
+              sl.id
             )
           )
         )

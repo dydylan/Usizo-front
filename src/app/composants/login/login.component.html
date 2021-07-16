@@ -1,10 +1,10 @@
-<section class="login-section row justify-center items-center">
+<section class="login-section row justify-center">
   <form *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
         novalidate
-        class="col">
+        class="col items-center">
     <h2>Se connecter</h2>
 
   <div class="w-full">
@@ -13,7 +13,7 @@
              [(ngModel)]="form.username"
              required
              #username="ngModel"
-             class="form-control bg-transparent w-full focus:outline-none focus:rang"
+             class="form-control  bg-transparent w-full focus:outline-none focus:rang"
              type="text" />
       <div *ngIf="f.submitted && username.errors" class="text-red-400 text-xl">
         <div *ngIf="username.errors.required">Nom obligatoire</div>
@@ -35,13 +35,6 @@
     <div class="flex justify-end w-full">
       <button type="submit"> Se connecter</button>
     </div>
-
-    <p type="reset" class="mt-3 text-center text-yellow-400 hover:text-yellow-600 cursor-pointer" (click)="onReset()">Effacer le formulaire</p>
-    <div class="row">
-      <p class="text-gray-400 mr-3">Pas envore de compte ? </p>
-      <p><a routerLink="/sign-up">S'inscrire</a></p>
-    </div>
-
   </div>
 
   </form>

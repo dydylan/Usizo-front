@@ -60,13 +60,6 @@ export class SearchAndAddComponent implements OnInit {
     this._qte = value;
   }
 
-  addProd(id:number){
-    this.shoppingList.subscribe(sl => {
-      this.needService.create(sl.id,id,this._formProd.get('qte')?.value).subscribe(() =>
-        this.shoppingListChange.emit(this.shoppingListService.get(sl.id.toString())))
-    })
-  }
-
   searchProd(){
     this._products = this.productService.search(this.search)
   }

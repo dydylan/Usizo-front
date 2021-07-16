@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from "../../models/User";
+import {Observable} from "rxjs";
+import {Role} from "../../models/Role";
 
 @Component({
   selector: 'app-user-summary',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSummaryComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  user:User= new User(NaN,"","","",new Role(NaN,""),[])
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

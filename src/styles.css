@@ -41,10 +41,6 @@ h1,h2{
   margin:2rem;
 }
 
-.shopping-list-summary-article, .need-to-modify-article{
-  margin: 0 2rem 0 2rem;
-}
-
 
 
 footer {
@@ -96,8 +92,17 @@ footer {
   margin: 1rem;
 }
 
+.minus-and-plus-img{
+  width: 7rem;
+}
+
 .search-img {
-  width: 1em;
+  width: 1.25em;
+  margin: 0.5rem 1.5rem 0.5rem 0;
+}
+
+.search-img:hover{
+  filter: brightness(75%);
 }
 
 /* * {
@@ -154,7 +159,7 @@ a{
   transform: scale(1.5);
 }
 
-.need-to-modify-article, .need-to-add-article,
+.need-to-modify-article, .app-need-to-add .need-to-add-article,
 .need-to-check-article
 {
   border-bottom: dashed var(--orange);
@@ -164,7 +169,7 @@ a{
 
 .need-to-modify-article:last-child,
 .need-to-check-article:last-child,
-.need-to-add-article:last-child{
+.app-need-to-add:last-child .need-to-add-article{
   border-bottom: none;
   padding: 1rem;
 }
@@ -188,6 +193,16 @@ a{
   box-shadow: 0 0 4.8rem rgba(0, 0, 0, .16);
   border-radius: 1rem;
 }
+
+.shopping-list-summary-article{
+  margin: 4.5rem 3rem 4.5rem 3rem
+}
+
+.login-section, .signup-section{
+  align-items: center;
+}
+
+
 
 .need-to-modify-section, .search-and-add-section, .dashboard-section, .shopping-list-manager,
 .login-section, .signup-section, .search-and-add, .need-to-check-section, .shopping-list-summary-article,
@@ -275,4 +290,8 @@ a{
 
 .dashboard-section {
   height: 84vh;
+}
+
+input[type=number]{
+  border-radius:0.5rem;
 }

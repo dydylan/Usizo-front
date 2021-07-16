@@ -1,4 +1,6 @@
 <h2>Chercher et ajouter un besoin</h2>
+
+
 <div class="bg-white flex items-center rounded-full search-bar">
   <input
     id="search"
@@ -21,6 +23,7 @@
     class="search-img"
     src="../../../assets/images/search.png"
     alt="search image"
+    (click)="searchProd()"
   />
 </div>
 
@@ -45,21 +48,5 @@
   </div>
 </div>
 <div class="overflow-container">
-  <article class="row flex-wrap items-center need-to-add-article" *ngFor="let prod of products | async">
-    <form class="row items-center"[formGroup]="formProd" (ngSubmit)="addProd(prod.id)">
-      <input
-        type="image"
-        class="plus-img mr-3"
-        src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
-        alt="plus image"
-      />
-      <input type="number" class="mr-3 bg-gray-300 text-right" name="custom-input-number" value="0" size="2"/>
-    </form>
-    <img
-      class="product-img mr-3"
-      src="{{prod.imgUrl}}"
-      alt="image du produit"
-    />
-    <p class="mr-3">{{prod.nom}}</p>
-  </article>
+  <app-need-to-add class="app-need-to-add"*ngFor="let prod of products | async" [prod]="prod" [(shoppingList)]="shoppingList" (shoppingListChange)="shoppingListChange.emit(shoppingList)"></app-need-to-add>
 </div>

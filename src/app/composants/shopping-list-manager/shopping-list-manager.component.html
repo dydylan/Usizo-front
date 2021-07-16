@@ -5,47 +5,20 @@
     </div>
     <article class="row flex justify-center items-center user-article">
       <ul class="row">
-        <li *ngFor="let user of (shoppingList|async)?.members">
-          <img
-            src="{{user.imgUrl}}"
-            class="user-img"
-            alt="user image"
-          />
-        </li>
+        <ng-container *ngFor="let user of (shoppingList |async)?.members">
+          <ng-container *ngIf="userId != user.id">
+            <span class="close mb-5" (click)="remUser(user.id)">&times;</span>
+            <app-user-summary [user]="user"></app-user-summary></ng-container>
+        </ng-container>
       </ul>
 
-      <app-add-user></app-add-user>
+      <app-add-user [(shoppingList)]="shoppingList"></app-add-user>
 
     </article>
     <div class="grid md:grid-cols-12">
       <section class="col sm:col-span-4 md:col-span-6 need-to-modify-section">
         <h2>Modifier et enlever des besoins</h2>
-
-        <div class="overflow-container">
-          <article class="row items-center flex-wrap justify-between need-to-modify-article w-full" *ngFor="let need of (shoppingList | async)?.needList">
-            <div class="row flex-wrap items-center">
-              <img
-                class="product-img"
-                src="{{need.product.imgUrl}}"
-                alt="product image"
-              />
-              <p class="quantity">x{{need.quantity}}</p>
-              <p>{{need.product.nom}}</p>
-            </div>
-            <input
-              type="image"
-              class="minus-img"
-              src="https://i.ibb.co/wRTBjFr/minus-icon.png"
-              alt="minus image"
-            />
-<!--              (click)="remNeed(need.id)"-->
-<!--            />-->
-          </article>
-        </div>
-
-
-
-<!--        <app-need-to-modify class="app-need-to-modify flex-wrap overflow-container" [(shoppingList)]="shoppingList" ></app-need-to-modify>-->
+        <app-need-to-modify class="app-need-to-modify col overflow-container" [(shoppingList)]="shoppingList" ></app-need-to-modify>
       </section>
       <section class="col sm:col-span-4 md:col-span-6 search-and-add-section">
         <app-search-and-add [(shoppingList)]="shoppingList"></app-search-and-add>
@@ -54,7 +27,7 @@
 
     </div>
     <div class="flex justify-end">
-      <button class="delete-btn" (click)="remList(userId.toString())">Supprimer la liste</button>
+      <button class="delete-btn" (click)="remList(userId)">Supprimer la liste</button>
     </div>
   </section>
 </div>
