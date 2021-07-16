@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const API_URL = "http://localhost:8080/api"
+export const API_URL = "https://usizo-angular.herokuapp.com/api"
 
 /*
  * For easier debugging in development mode, you can import the following file
