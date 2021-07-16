@@ -105,13 +105,21 @@ footer {
   filter: brightness(75%);
 }
 
-/* * {
-  border: 1px solid;
-} */
-
-.usizo-img {
+.usizo-img, .my-profile-picture {
   width: 6rem;
 }
+
+.my-name{
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+}
+
+.my-profile-picture{
+  border-radius: 50%;
+}
+
 
 button{
   padding:1rem;
