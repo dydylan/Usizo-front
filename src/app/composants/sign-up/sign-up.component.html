@@ -11,8 +11,8 @@
              name="username"
              [(ngModel)]="form.username"
              #username="ngModel"
-             class="form-control bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" required/>
-      <div *ngIf="fo.submitted && username.errors" class="text-red-400 text-xs">
+             class="form-control bg-transparent  w-full focus:outline-none focus:rang" required/>
+      <div *ngIf="fo.submitted && username.errors" class="text-red-400 text-xl">
         <div *ngIf="username.errors.required">Nom obligatoire</div>
       </div>
     </div>
@@ -24,10 +24,10 @@
              required
              #password1="ngModel"
              name="password1"
-             class="form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full"
+             class="form-control bg-transparent focus:outline-none focus:rang w-full"
              minlength="4"
              [ngClass]="{ 'is-invalid': fo.submitted && password1.errors }"/>
-      <div *ngIf="fo.submitted && password1.errors" class="text-red-400 text-xs">
+      <div *ngIf="fo.submitted && password1.errors" class="text-red-400 text-xl">
         <div *ngIf="password1.errors.required">Mot de passe obligatoire</div>
         <div *ngIf="password1.errors.minlength">Il doit contenir au moins 4 caractères</div>
       </div>
@@ -39,10 +39,10 @@
              required
              #password2="ngModel"
              name="password2"
-             class="form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full"
+             class="form-control bg-transparent focus:outline-none focus:rang w-full"
              minlength="4"
              [ngClass]="{ 'is-invalid': fo.submitted && password2.errors }"/>
-      <div *ngIf="fo.submitted && password2.errors" class="text-red-400 text-xs">
+      <div *ngIf="fo.submitted && password2.errors" class="text-red-400 text-xl">
         <div *ngIf="password2.errors.required">Confirmation obligatoire</div>
         <div *ngIf="password2.errors.mustMatch">Les deux mots de passe doivent correspondrent</div>
       </div>

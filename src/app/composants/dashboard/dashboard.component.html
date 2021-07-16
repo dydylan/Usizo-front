@@ -2,18 +2,18 @@
   <h1>Vos listes</h1>
   <div class="grid md:grid-cols-12 items-start">
     <div class="col sm:col-span-4 md:col-span-6">
-      <section class="col shopping-list-summary-section overflow-container px-20 pb-20">
-          <app-shopping-list-summary [shoppingList]="sl" [curentUser]="user" class="app-shopping-list-summary" *ngFor="let sl of userLists" routerLink='./need-to-check/{{user.id}}/{{sl.id}}'></app-shopping-list-summary>
+      <section class="col shopping-list-summary-section overflow-container">
+        <app-shopping-list-summary [shoppingList]="sl" [curentUser]="user" class="app-shopping-list-summary" *ngFor="let sl of userLists" routerLink='./need-to-check/{{user.id}}/{{sl.id}}'></app-shopping-list-summary>
+        <div class="flex justify-center">
+          <input
+            type="image"
+            class="plus-img"
+            src="../../../assets/images/plus.png"
+            alt="plus image"
+            (click)="addList()"
+          />
+        </div>
       </section>
-      <div class="flex justify-center">
-        <input
-          type="image"
-          class="plus-img"
-          src="https://icons-for-free.com/iconfiles/png/512/circle+download+plus+icon-1320086208811198918.png"
-          alt="plus image"
-          (click)="addList()"
-        />
-      </div>
     </div>
     <section class="col sm:col-span-4 md:col-span-6 need-to-check-section" id="ntc-section">
       <router-outlet></router-outlet>

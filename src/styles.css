@@ -11,12 +11,10 @@ html {
   font-size: .625em; /* fallback IE8+ */
   font-size: calc(1em * .625); /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
   scroll-behavior: smooth;
-  height: 100%;
 }
 
 body {
   font-size:2rem;
-  height: 100%;
 }
 
 h1 {
@@ -43,27 +41,12 @@ h1,h2{
   margin:2rem;
 }
 
-.shopping-list-summary-article, .need-to-modify-article{
-  margin: 0 2rem 0 2rem;
-}
 
-.mainRouter {
-  height: 90%;
-  overflow-y: scroll;
-}
-
-app-header{
-  height: 6%;
-}
 
 footer {
   color: white;
   background-color: var(--orange);
   padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 4%;
 }
 
 .menu-item{
@@ -71,6 +54,7 @@ footer {
   font-weight: 600;
   padding: 1rem 2rem;
   text-transform: uppercase;
+  cursor:pointer;
 }
 
 .menu-item .active,
@@ -104,20 +88,38 @@ footer {
 .check-img,
 .plus-img,
 .minus-img {
-  width: 50px;
+  width: 5rem;
+  margin: 1rem;
+}
+
+.minus-and-plus-img{
+  width: 7rem;
 }
 
 .search-img {
-  width: 1em;
+  width: 1.25em;
+  margin: 0.5rem 1.5rem 0.5rem 0;
 }
 
-/* * {
-  border: 1px solid;
-} */
+.search-img:hover{
+  filter: brightness(75%);
+}
 
-.usizo-img {
+.usizo-img, .my-profile-picture {
   width: 6rem;
 }
+
+.my-name{
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+}
+
+.my-profile-picture{
+  border-radius: 50%;
+}
+
 
 button{
   padding:1rem;
@@ -165,18 +167,27 @@ a{
   transform: scale(1.5);
 }
 
-.need-to-modify-article, .need-to-add-article{
+.need-to-modify-article, .app-need-to-add .need-to-add-article,
+.need-to-check-article
+{
   border-bottom: dashed var(--orange);
   border-radius: 0;
   padding: 1rem;
 }
 
-.app-need-to-check:last-child .need-to-check-article,
-.app-need-to-modify:last-child .need-to-modify-article,
+.need-to-modify-article:last-child,
+.need-to-check-article:last-child,
 .app-need-to-add:last-child .need-to-add-article{
   border-bottom: none;
   padding: 1rem;
 }
+
+/*.app-need-to-check:last-child .need-to-check-article,*/
+/*.app-need-to-modify:last-child .need-to-modify-article,*/
+/*.app-need-to-add:last-child .need-to-add-article{*/
+/*  border-bottom: none;*/
+/*  padding: 1rem;*/
+/*}*/
 
 .need-to-check-section,
 .need-to-modify-section,
@@ -191,6 +202,16 @@ a{
   border-radius: 1rem;
 }
 
+.shopping-list-summary-article{
+  margin: 4.5rem 3rem 4.5rem 3rem
+}
+
+.login-section, .signup-section{
+  align-items: center;
+}
+
+
+
 .need-to-modify-section, .search-and-add-section, .dashboard-section, .shopping-list-manager,
 .login-section, .signup-section, .search-and-add, .need-to-check-section, .shopping-list-summary-article,
 .signup-section form, .login-section form{
@@ -198,8 +219,20 @@ a{
 }
 
 .overflow-container {
-  height: 42rem;
   overflow-y: scroll;
+}
+
+.dashboard-section .overflow-container{
+  height: 45rem;
+}
+
+.need-to-modify-section .overflow-container{
+  height: 55rem;
+}
+
+.search-and-add-section .overflow-container
+{
+  height: 42rem;
 }
 
 .shopping-list-summary-article:hover{
@@ -242,9 +275,31 @@ a{
   max-width:55rem;
   flex-wrap: wrap;
   margin:2rem 1rem 2rem 1rem;
+  justify-content: center;
 }
 
 .user-name{
   max-width: 10rem;
   text-align:center;
+  margin: 1rem;
+}
+
+.delete-btn:hover{
+  background-color: #AF1638;
+}
+
+.login-section {
+  height: 79vh;
+}
+
+.signup-section {
+  height: 84vh;
+}
+
+.dashboard-section {
+  height: 84vh;
+}
+
+input[type=number]{
+  border-radius:0.5rem;
 }

@@ -13,7 +13,7 @@
              [(ngModel)]="form.username"
              required
              #username="ngModel"
-             class="form-control  bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
+             class="form-control  bg-transparent w-full focus:outline-none focus:rang"
              type="text" />
       <div *ngIf="f.submitted && username.errors" class="text-red-400 text-xl">
         <div *ngIf="username.errors.required">Nom obligatoire</div>
@@ -26,7 +26,7 @@
              required
              minlength="6"
              #password="ngModel"
-             class=" form-control bg-transparent text-yellow-500 focus:outline-none focus:rang w-full"
+             class=" form-control bg-transparent focus:outline-none focus:rang w-full"
              type="password" />
       <div *ngIf="f.submitted && password.errors" class="text-red-400 text-xl">
         <div *ngIf="password.errors.required">Mot de passe obligatoire</div>

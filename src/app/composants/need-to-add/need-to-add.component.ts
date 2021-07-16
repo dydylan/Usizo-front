@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Observable} from "rxjs";
 import {Product} from "../../models/Product";
+import {ShoppingList} from "../../models/ShoppingList";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NeedService} from "../../services/need.service";
 import {ProductsService} from "../../services/products.service";
-import {ActivatedRoute} from "@angular/router";
-import {ShoppingList} from "../../models/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-need-to-add',
@@ -13,55 +14,28 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./need-to-add.component.css']
 })
 export class NeedToAddComponent implements OnInit {
-
-  private _products:Product[] = []
-  @Input() shoppingListId:number = 0
-  private _formProd:FormGroup;
-  private _qte:FormControl;
+  @Input()
+  prod:Product = new Product(NaN,"","","")
+  @Input()
+  shoppingList:Observable<ShoppingList> = new Observable<ShoppingList>()
+  @Output()
+  shoppingListChange = new EventEmitter<Observable<ShoppingList>>();
+  form: any = {
+    qte:null
+  };
 
   constructor(private needService:NeedService, private productService:ProductsService, private shoppingListService:ShoppingListService, private activeRoute:ActivatedRoute,private formBuilder:FormBuilder) {
-    this._qte=new FormControl('',[Validators.required])
-    this._formProd=this.formBuilder.group({
-      qte:this._qte
-    })
+
   }
 
   ngOnInit(): void {
   }
 
-  get products(): Product[] {
-    return this._products;
-  }
 
-  set products(value: Product[]) {
-    this._products = value;
-  }
-
-  get formProd(): FormGroup {
-    return this._formProd;
-  }
-
-  set formProd(value: FormGroup) {
-    this._formProd = value;
-  }
-
-  get qte(): FormControl {
-    return this._qte;
-  }
-
-  set qte(value: FormControl) {
-    this._qte = value;
-  }
-
-  addProd(id:number){
-    this.productService.get(id.toString()).subscribe(prod =>
-    {
-      this.needService.create(this.shoppingListId,id,this._formProd.get('qte')?.value).subscribe(need =>
-      {
-
-      })
-
+  addProd(){
+    this.shoppingList.subscribe(sl => {
+      this.needService.create(sl.id,this.prod.id,this.form.qte).subscribe(() =>
+        this.shoppingListChange.emit(this.shoppingListService.get(sl.id)))
     })
   }
-
 }
