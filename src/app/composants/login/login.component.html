@@ -35,6 +35,9 @@
     <div class="flex justify-end w-full">
       <button type="submit"> Se connecter</button>
     </div>
+    <div *ngIf="errorMessage != ''" class="text-red-400 text-xl">
+      <p> {{errorMessage}}</p>
+    </div>
   </div>
 
   </form>

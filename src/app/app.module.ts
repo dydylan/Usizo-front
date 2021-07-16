@@ -45,5 +45,6 @@ import { ProductToAddComponent } from './product-to-add/product-to-add.component
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
 

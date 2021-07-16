@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { AuthService } from '../../services/auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 
@@ -22,11 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(){
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+    if (this.tokenStorage.getToken() != null) {
+      window.location.href="dashboard"
     }
-
   }
 
   onSubmit(): void {
@@ -43,8 +40,9 @@ export class LoginComponent implements OnInit {
         window.location.href="/dashboard"
       },
       err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = "Utilisateur Introuvable";
         this.isLoginFailed = true;
+        console.log(this.errorMessage)
       }
     );
   }
