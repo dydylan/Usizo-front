@@ -1,5 +1,5 @@
 <article class="col items-center shopping-list-summary-article">
-  <p class="text-black">{{shoppingList.name}}</p>
+  <p>{{shoppingList.name}}</p>
   <div class="row items-start flex-wrap">
     <ng-container *ngFor="let user of shoppingList.members">
       <app-user-summary *ngIf="curentUser.id != user.id"  [user]="user"></app-user-summary>

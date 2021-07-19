@@ -20,6 +20,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AddUserComponent } from './composants/add-user/add-user.component';
 import { UserSummaryComponent } from './composants/user-summary/user-summary.component';
 import {NeedToAddComponent } from './composants/need-to-add/need-to-add.component';
+import { AdvancedSearchComponent } from './composants/advanced-search/advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {NeedToAddComponent } from './composants/need-to-add/need-to-add.componen
     AddUserComponent,
     UserSummaryComponent,
     NeedToAddComponent,
+    AdvancedSearchComponent,
   ],
   imports: [BrowserModule,
     HttpClientModule, AppRoutingModule, FormsModule,FormsModule, ReactiveFormsModule],

@@ -1,22 +1,48 @@
-<div class="row justify-between navbar">
-  <div class="row flex items-center">
-    <div class="mr-3">
+<header class="main-header">
+  <div class="container">
+    <div class="m-3">
       <a routerLink="/login"><img class="usizo-img" src="assets/images/logo2.png" alt="logo-usizo" /></a>
     </div>
-  </div>
-  <div class="row flex items-center">
-    <ng-container *ngIf="token == null">
-      <div class="m-5">
-        <a routerLink="/login" class="menu-item">Se connecter</a>
+    <nav class="main-nav">
+      <button [attr.aria-expanded]="open" aria-controls="main-menu" (click)="displayMenu()">Menu</button>
+      <div class="menu" id="main-menu" [hidden]="menuHidden">
+        <ng-container *ngIf="token == null">
+          <a class="menu-item text-center" routerLink="/login">Se connecter</a>
+          <a class="menu-item text-center" routerLink="/sign-up">S'inscrire</a>
+        </ng-container>
+<!--        <div *ngIf="token != null">-->
+<!--          <div class=" block p-3 a">-->
+<!--            <img class="my-profile-picture" [src]="user.imgUrl" alt="userImg" />-->
+<!--            <p class="my-name">{{user.nom}}</p>-->
+<!--          </div>-->
+<!--          <a class="menu-item block text-center" (click)="logout()">Se déconnecter</a>-->
+<!--        </div>-->
+        <ng-container *ngIf="token != null">
+<!--          <a class="menu-item text-center" routerLink="/login">Se connecter</a>-->
+          <div class=" block p-3 a">
+            <img class="my-profile-picture" [src]="user.imgUrl" alt="userImg" />
+            <p class="my-name">{{user.nom}}</p>
+          </div>
+          <a class="menu-item block text-center self-center" (click)="logout()">Se déconnecter</a>
+        </ng-container>
       </div>
-      <div class="mr-5">
-        <a routerLink="/sign-up" class="menu-item">S'inscrire</a>
-      </div>
-    </ng-container>
-    <div class="row items-center" *ngIf="token != null">
-      <img class="my-profile-picture" [src]="user.imgUrl" alt="userImg" />
-      <p class="my-name">{{user.nom}}</p>
-      <a class="menu-item" (click)="logout()">Se déconnecter</a>
-    </div>
+    </nav>
   </div>
-</div>
+
+
+  <!--    <nav class="main-nav">-->
+  <!--      <button [attr.aria-expanded]="open" aria-controls="main-menu" (click)="displayMenu()">Menu</button>-->
+  <!--      <ul class="menu" id="main-menu" [hidden]="menuHidden">-->
+  <!--        <ng-container *ngIf="token == null">-->
+  <!--          <div class="menu-item"><a routerLink="/login">Se connecter</a></div>-->
+  <!--          <div class="menu-item"><a routerLink="/sign-up">S'inscrire</a></div>-->
+  <!--        </ng-container>-->
+  <!--        <div class="row items-center main-menu" *ngIf="token != null">-->
+  <!--          <img class="my-profile-picture" [src]="user.imgUrl" alt="userImg" />-->
+  <!--          <p class="my-name">{{user.nom}}</p>-->
+  <!--          <div class="menu-item"><a routerLink="/logout">Se déconnecter</a></div>-->
+  <!--        </div>-->
+  <!--      </ul>-->
+  <!--    </nav>-->
+
+</header>

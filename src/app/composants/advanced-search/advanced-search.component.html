@@ -1,0 +1,37 @@
+<input
+  type="image"
+  class="gearwheel-img"
+  src="assets/images/gearwheel.svg"
+  alt="plus image"
+  (click)="displayModal()"
+/>
+
+<!-- Modal de recherche avancée -->
+<div id="myModal" class="modal row" [style.display]="displayAdvancedSearch">
+
+  <!-- Le contenu de la modal -->
+  <div class="modal-content col">
+    <div class="row justify-end">
+      <span class="close" (click)="hideModal()">&times;</span>
+    </div>
+    <div class="max-w-sm rounded overflow-hidden">
+      <h3 class="m-1 pb-2 mb-2">Recherche par catégories</h3>
+      <div class="border-b-2 m-0"></div>
+      <div class="mr-8 ml-4">
+        <div class="relative">
+          <div class="rounded shadow-md my-2 relative pin-t pin-l">
+            <ul class="list-reset">
+              <li class="p-2"><input class="border-2 rounded h-8 w-full focus:outline-none focus:rang"><br></li>
+              <li><p class="p-2 block text-black hover:bg-grey-light cursor-pointer">
+                Choix 1
+              </p></li>
+              <li><p class="p-2 block text-black hover:bg-grey-light cursor-pointer">Choix 2</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

@@ -6,10 +6,10 @@
   (click)="displayModal()"
 />
 
-<!-- The Modal -->
+<!-- La Modal -->
 <div id="myModal" class="modal row" [style.display]="varDisplay">
 
-  <!-- Modal content -->
+  <!-- Le contenu de la modal -->
   <div class="modal-content col">
     <div class="row justify-end">
       <span class="close mb-5" (click)="hideModal()">&times;</span>
@@ -34,11 +34,11 @@
       <div class="p-1">
         <button
           class="
-            bg-blue-300
+            bg-transparent
             text-white
             rounded-full
             p-2
-            hover:bg-blue-400
+            hover:bg-transparent
             focus:outline-none
             w-12
             h-12
@@ -50,7 +50,7 @@
           <input
             type="image"
             class="search-img"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Search_Noun_project_15028.svg/1046px-Search_Noun_project_15028.svg.png"
+            src="../../../assets/images/search.png"
             alt="search image"
             (click)="searchUser()"
           />

@@ -1,52 +1,34 @@
 <h2>Chercher et ajouter un besoin</h2>
 
-
-<div class="bg-white flex items-center rounded-full search-bar">
-  <input
-    id="search"
-    class="
-          rounded-l-full
-          w-full
-          py-4
-          px-6
-          text-gray-700
-          leading-tight
-          focus:outline-none
-        "
-    type="text"
-    placeholder="Nom du produit"
-    [(ngModel)]="search"
-    (ngModelChange)="searchProd()"
-  />
-  <input
-    type="image"
-    class="search-img"
-    src="../../../assets/images/search.png"
-    alt="search image"
-    (click)="searchProd()"
-  />
+<div class="row">
+  <div class="bg-white flex items-center rounded-full search-bar">
+    <input
+      id="search"
+      class="
+            rounded-l-full
+            w-full
+            py-4
+            px-6
+            text-gray-700
+            leading-tight
+            focus:outline-none
+          "
+      type="text"
+      placeholder="Nom du produit"
+      [(ngModel)]="search"
+      (ngModelChange)="searchProd()"
+    />
+    <input
+      type="image"
+      class="search-img"
+      src="../../../assets/images/search.png"
+      alt="search image"
+      (click)="searchProd()"
+    />
+  </div>
+  <app-advanced-search></app-advanced-search>
 </div>
 
-<div class="grid md:grid-cols-12 items-start">
-  <div class="sm:col-span-4">
-    <label>
-      <input type="checkbox" />
-      <span> Fournitures scolaires </span>
-    </label>
-  </div>
-  <div class="sm:col-span-4 ">
-    <label>
-      <input type="checkbox" />
-      <span> Produit ménagers </span>
-    </label>
-  </div>
-  <div class="sm:col-span-4">
-    <label>
-      <input type="checkbox" />
-      <span> Fruits </span>
-    </label>
-  </div>
-</div>
 <div class="overflow-container">
   <app-need-to-add class="app-need-to-add"*ngFor="let prod of products | async" [prod]="prod" [(shoppingList)]="shoppingList" (shoppingListChange)="shoppingListChange.emit(shoppingList)"></app-need-to-add>
 </div>
